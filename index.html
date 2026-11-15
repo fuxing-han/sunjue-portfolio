@@ -326,6 +326,7 @@
     }
     .detail-figure {position: relative; max-width: 1000px; margin-inline: auto}
     .tvc-display {max-width: 1000px; margin-inline: auto}
+    .tvc-storyboard {display: block; width: 100%; height: auto; margin-top: clamp(28px, 4vw, 52px)}
     .tvc-display .project-film:not(:fullscreen) {aspect-ratio: 16 / 9; object-fit: contain}
     .detail-gallery {max-width: 1000px; margin-inline: auto; line-height: 0}
     .detail-gallery img {display: block; width: 100%; height: auto; margin: 0}
@@ -726,6 +727,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 4l13 8-13 8z"/></svg>
         </button>
       </div>
+    <img class="tvc-storyboard" id="tvc-storyboard-image" src="./asset-tvc-storyboard.svg" data-standalone-mime="image/svg+xml" width="1440" height="1590" alt="ORGANIC EMOTION TVC 九宫格分镜解析：创意叙事、九个关键画面与视觉素材策略" loading="lazy" decoding="async">
     </figure>
     <nav class="ip-sections" role="tablist" aria-label="品牌IP设计作品分类" hidden>
       <a class="ip-section" id="ip-section-01" role="tab" href="#project-01/section-01" aria-controls="portfolio-gallery" aria-selected="true"><span class="ip-section-number">01</span><span>项目背景与IP设定</span></a>
@@ -2309,6 +2311,10 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
     await Promise.all([...root.querySelectorAll('script[type="application/octet-stream"][data-source]')].map(async node => {
       if (node.textContent.trim()) return;
       node.textContent = await base64For(node.dataset.source);
+    }));
+    await Promise.all([...root.querySelectorAll('img[data-standalone-mime]')].map(async node => {
+      node.setAttribute('src', 'data:' + node.dataset.standaloneMime + ';base64,' + await base64For(node.getAttribute('src')));
+      node.removeAttribute('data-standalone-mime');
     }));
   }
   exportButton.addEventListener('click', async () => {
