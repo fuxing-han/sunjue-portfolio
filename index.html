@@ -51,14 +51,10 @@
       transition: background-color .18s ease;
     }
     .pill:hover, .pill[aria-expanded="true"] {background: #11603e}
-    .contact {position: relative; flex: none}
-    .contact-box {
-      z-index: 3; width: min(242px, calc(100vw - 2 * var(--gutter))); padding: 14px 16px;
-      border: 1px solid #cad8bf; border-radius: 13px; background: #fcfdf9; color: var(--forest);
-      box-shadow: 0 8px 24px rgb(8 72 45 / .08); font: 400 14px/1.75 var(--site-font);
-      overflow-wrap: anywhere;
-    }
-    .topbar .contact-box {position: absolute; top: calc(100% + 9px); right: 0}
+    .contact {position: relative; flex: none; display: grid; justify-items: center; gap: 12px}
+    .contact-box {max-width: 100%; color: var(--forest); font: 400 14px/1.75 var(--site-font); overflow-wrap: anywhere; text-align: center}
+    .topbar .contact {justify-items: end; min-width: 0}
+    .topbar .contact-box {text-align: right}
     .site-footer {
       margin-top: clamp(58px, 8vw, 104px); padding: 40px 0 64px;
       border-top: 1px solid var(--line); display: grid; justify-items: center;
@@ -66,7 +62,7 @@
     #home:not([hidden]) ~ .site-footer {margin-top: clamp(28px, 3.4vw, 48px); padding-top: 29px}
     .site-footer .contact {display: grid; justify-items: center}
     .site-footer .pill {padding-inline: 25px; min-height: 48px}
-    .site-footer .contact-box {margin-top: 10px}
+    .site-footer .contact-box {margin-top: 0}
 
     .hero {
       position: relative; display: grid; justify-items: center; text-align: center;
@@ -464,6 +460,7 @@
       .topbar {min-height: 69px}
       .brand {font-size: 23px}
       .topbar .pill {padding-inline: 15px}
+      .topbar .contact-box {font-size: 12px}
       .hero {padding: 55px 0 45px}
       .hero h1 {max-width: calc(100% - 34px)}
       .hero-subtitle {letter-spacing: .17em}
@@ -508,11 +505,12 @@
       <span data-copy="brand">SunJue</span>
     </a>
     <div class="contact">
-      <button type="button" class="pill" data-copy="contact" aria-controls="contact-top" aria-expanded="false">Contact Me</button>
-      <div class="contact-box" id="contact-top" lang="zh-CN" hidden>
+      <div class="contact-box" id="contact-top" lang="zh-CN">
         <p data-copy="wechat">微信：13397139094</p>
         <p data-copy="email">邮箱：hanh08@163.com</p>
       </div>
+      <button type="button" class="pill" data-copy="contact" data-contact-copy aria-describedby="contact-top" title="复制微信和邮箱">Contact Me</button>
+      <span class="contact-feedback sr-only" role="status" aria-live="polite"></span>
     </div>
   </header>
 
@@ -815,11 +813,12 @@ Phone and scene props not included</p></article>
 
   <footer class="site-footer wrap">
     <div class="contact">
-      <button type="button" class="pill" data-copy="contact" aria-controls="contact-bottom" aria-expanded="false">Contact Me</button>
-      <div class="contact-box" id="contact-bottom" lang="zh-CN" hidden>
+      <div class="contact-box" id="contact-bottom" lang="zh-CN">
         <p data-copy="wechat">微信：13397139094</p>
         <p data-copy="email">邮箱：hanh08@163.com</p>
       </div>
+      <button type="button" class="pill" data-copy="contact" data-contact-copy aria-describedby="contact-bottom" title="复制微信和邮箱">Contact Me</button>
+      <span class="contact-feedback sr-only" role="status" aria-live="polite"></span>
     </div>
   </footer>
 
@@ -1821,34 +1820,45 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
     renderDetailCopy();
   }
 
-  const contactButtons = [...document.querySelectorAll('.contact button')];
-  let openContact = null;
-  function closeContact() {
-    if (!openContact) return;
-    openContact.setAttribute('aria-expanded', 'false');
-    document.getElementById(openContact.getAttribute('aria-controls')).hidden = true;
-    openContact = null;
+  async function copyContactText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return;
+    } catch {
+      const field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+      const focused = document.activeElement;
+      document.body.append(field);
+      field.select();
+      let copied = false;
+      try { copied = document.execCommand('copy'); }
+      finally {
+        field.remove();
+        focused?.focus({preventScroll: true});
+      }
+      if (!copied) throw new Error('Clipboard unavailable');
+    }
   }
-  for (const button of contactButtons) {
-    button.addEventListener('click', () => {
-      const wasOpen = openContact === button;
-      closeContact();
-      if (wasOpen) return;
-      openContact = button;
-      button.setAttribute('aria-expanded', 'true');
-      const box = document.getElementById(button.getAttribute('aria-controls'));
-      box.hidden = false;
-      if (button.closest('.site-footer')) box.scrollIntoView({block: 'nearest'});
+  for (const button of document.querySelectorAll('[data-contact-copy]')) {
+    let feedbackTimer;
+    button.addEventListener('click', async () => {
+      const contact = button.closest('.contact');
+      const text = [...contact.querySelectorAll('.contact-box p')].map(line => line.textContent.trim()).join('\n');
+      const feedback = $('.contact-feedback', contact);
+      clearTimeout(feedbackTimer);
+      try {
+        await copyContactText(text);
+        button.textContent = '已复制';
+        feedback.textContent = '已复制微信和邮箱两行联系方式。';
+      } catch {
+        button.textContent = '请手动复制';
+        feedback.textContent = '复制未成功，请选中上方两行文字复制。';
+      }
+      feedbackTimer = setTimeout(() => { button.textContent = copy('contact'); }, 2200);
     });
   }
-  document.addEventListener('click', event => {
-    if (openContact && !openContact.closest('.contact').contains(event.target)) closeContact();
-  });
-  document.addEventListener('keydown', event => {
-    if (event.key !== 'Escape' || !openContact) return;
-    openContact.focus({preventScroll: true});
-    closeContact();
-  });
 
   function renderRoute(moveFocus) {
     const ipRoute = new RegExp('^#project-01(?:/section-(0[123]))?$').exec(location.hash);
@@ -1861,7 +1871,6 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
     if (oldIndex === -1 && index >= 0) homeScroll = scrollY;
     active = index;
     stopPreview();
-    closeContact();
     home.hidden = index >= 0;
     detail.hidden = index < 0;
     const showIp = index === 0;
@@ -2267,7 +2276,6 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
     tab.addEventListener('click', () => selectEditorTab(tab.getAttribute('aria-controls')));
   }
   $('.edit-launch').addEventListener('click', () => {
-    closeContact();
     video.pause();
     gucciFilm.pause();
     const gallery = galleryProjects.get(active);
