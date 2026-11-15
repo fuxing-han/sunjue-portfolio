@@ -392,69 +392,6 @@
     .project-nav small {font-size: 12px; color: var(--muted)}
     .project-nav strong {font: 500 clamp(16px, 1.85vw, 24px)/1.2 var(--site-font); overflow-wrap: anywhere}
 
-    .edit-launch {
-      position: fixed; z-index: 4; right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom));
-      display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px;
-      border: 1px solid #c8d7bb; border-radius: 100vw; background: var(--paper); color: var(--forest);
-      font: 500 13px var(--site-font);
-    }
-    .edit-launch:hover {background: var(--mint)}
-    .edit-launch svg {width: 15px; height: 15px}
-    .editor {
-      position: fixed; inset: 12px 12px 12px auto; margin: 0; width: min(420px, calc(100vw - 24px));
-      height: calc(100dvh - 24px); max-height: none; padding: 0; border: 1px solid #c5d3b7;
-      border-radius: 20px; background: var(--paper); color: var(--ink); font-family: var(--site-font);
-    }
-    .editor[open] {display: grid; grid-template-rows: auto minmax(0, 1fr) auto}
-    .editor::backdrop {background: rgb(8 37 24 / .12)}
-    .edit-header, .edit-footer {padding: 17px 20px}
-    .edit-header {border-bottom: 1px solid var(--line)}
-    .edit-header h2 {margin: 0 42px 12px 0; font: 500 20px/1.3 var(--site-font)}
-    .dialog-close {
-      position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; padding: 0;
-      display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--mint); color: var(--forest);
-    }
-    .dialog-close svg {width: 17px; height: 17px}
-    .edit-tabs, .edit-image-actions {display: flex; gap: 6px; flex-wrap: wrap}
-    .edit-tabs button, .edit-small {
-      padding: 7px 12px; border: 1px solid #c5d3b7; border-radius: 100vw;
-      color: var(--forest); background: transparent; font-size: 13px; font-weight: 500;
-    }
-    .edit-tabs button[aria-pressed="true"], .edit-small:hover {background: var(--mint)}
-    .edit-body {overflow-y: auto; overscroll-behavior: contain; padding: 16px 20px}
-    .edit-body h3 {margin-bottom: 12px; color: var(--forest); font-size: 14px}
-    .edit-group + .edit-group {border-top: 1px solid var(--line); margin-top: 20px; padding-top: 17px}
-    .edit-note {margin: -5px 0 12px; color: var(--muted); font-size: 12px}
-    .edit-field {display: grid; gap: 5px; margin-bottom: 12px; font-size: 13px}
-    .edit-field :is(input, textarea) {
-      width: 100%; min-height: 36px; padding: 7px 9px; border: 1px solid #becdb1; border-radius: 8px;
-      background: #fff; color: var(--ink); font: 400 14px/1.4 var(--site-font);
-    }
-    .edit-field textarea {resize: vertical; min-height: 65px}
-    .edit-field :focus-visible, .edit-small:focus-within {outline-offset: 2px}
-    .edit-images {display: grid; gap: 11px}
-    .edit-image {
-      display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center;
-      min-height: 72px; padding: 7px; border: 1px solid var(--line); border-radius: 11px;
-    }
-    .edit-image p {margin-bottom: 6px; font-size: 13px; overflow-wrap: anywhere}
-    .edit-thumb {width: 96px; aspect-ratio: var(--cover-ratio); border-radius: 7px; overflow: hidden}
-    .edit-thumb.art-thumb {display: grid; place-items: center; background: #e4ecd9; color: var(--forest)}
-    .edit-thumb.art-thumb :is(img, svg) {width: 70px; height: 46px; object-fit: contain}
-    .gallery-tools {display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px}
-    .gallery-thumb {display: block; height: 60px; background: #e4ecd9; object-fit: cover}
-    .gallery-order {display: flex; flex-wrap: wrap; gap: 5px; align-items: center; margin-top: 7px}
-    .gallery-order label {display: flex; align-items: center; gap: 5px; font-size: 12px}
-    .gallery-order input {
-      width: 53px; padding: 3px 4px; border: 1px solid #becdb1; border-radius: 5px;
-      color: var(--ink); background: #fff; font-size: 12px;
-    }
-    label.edit-small {display: inline-block; position: relative; cursor: pointer}
-    label.edit-small:focus-within {outline: 2px solid var(--forest)}
-    .edit-small[disabled], .edit-download[disabled] {opacity: .65}
-    .edit-footer {border-top: 1px solid var(--line); display: grid; gap: 8px}
-    .edit-status {min-height: 1em; color: var(--muted); font-size: 12px; line-height: 1.45}
-    .edit-download {justify-self: start; min-height: 38px; padding: 0 15px; font: 500 13px var(--site-font)}
 
     @media (max-width: 650px) {
       .topbar {min-height: 69px}
@@ -469,7 +406,6 @@
       .index-range {display: none}
       .carousel-control {width: 34px; height: 34px}
       .project-media {border-radius: 13px}
-      .edit-thumb {border-radius: 7px}
       .preview-toggle {left: 9px; bottom: 9px}
       .product-columns, .product-grid {grid-template-columns: minmax(0, 1fr)}
     }
@@ -615,104 +551,104 @@
     </div>
     <section class="film-board" id="film-board" lang="zh-CN" aria-labelledby="film-board-title" hidden>
   <header class="board-header">
-    <h2 id="film-board-title" data-copy="boardSubtitle" data-edit-label="分镜页 · 标题">动作分镜与素材准备</h2>
+    <h2 id="film-board-title" data-copy="boardSubtitle">动作分镜与素材准备</h2>
   </header>
   <section class="board-summary">
-    <h3 data-copy="boardNarrativeTitle" data-edit-label="叙事 · 标题">01 叙事拆解</h3>
+    <h3 data-copy="boardNarrativeTitle">01 叙事拆解</h3>
     <div>
-      <p class="board-lead" data-copy="boardNarrativeLead" data-edit-label="叙事 · 正文">一张海报串起街头意外，让产品自然成为视线落点。</p>
-      <p class="board-note" data-copy="boardNarrativeFlow" data-edit-label="叙事 · 情节线">车流制造意外 → 人物接力推动情节 → 海报转为产品主视觉</p>
+      <p class="board-lead" data-copy="boardNarrativeLead">一张海报串起街头意外，让产品自然成为视线落点。</p>
+      <p class="board-note" data-copy="boardNarrativeFlow">车流制造意外 → 人物接力推动情节 → 海报转为产品主视觉</p>
     </div>
   </section>
   <div class="board-columns">
     <section class="board-shots">
-      <h3 data-copy="boardShotsTitle" data-edit-label="分镜 · 标题">02 动作与分镜</h3>
-      <p class="board-note" data-copy="boardShotsIntro" data-edit-label="分镜 · 说明">按成片顺序整理 · 时间为近似段落</p>
+      <h3 data-copy="boardShotsTitle">02 动作与分镜</h3>
+      <p class="board-note" data-copy="boardShotsIntro">按成片顺序整理 · 时间为近似段落</p>
       <ol class="board-shot-list">
         <li class="board-shot">
-          <span class="board-shot-number" data-copy="boardShot1Number" data-edit-label="分镜 01 · 编号">01</span>
-          <h4 data-copy="boardShot1Title" data-edit-label="分镜 01 · 标题">车过扬纸</h4>
-          <p class="board-time" data-copy="boardShot1Time" data-edit-label="分镜 01 · 时间">0–2.3 s</p>
-          <p class="board-shot-action" data-copy="boardShot1Action" data-edit-label="分镜 01 · 动作">出租车掠过，纸张飞起。
+          <span class="board-shot-number" data-copy="boardShot1Number">01</span>
+          <h4 data-copy="boardShot1Title">车过扬纸</h4>
+          <p class="board-time" data-copy="boardShot1Time">0–2.3 s</p>
+          <p class="board-shot-action" data-copy="boardShot1Action">出租车掠过，纸张飞起。
 角色A抱住纸叠、抬手遮挡。</p>
-          <p class="board-note" data-copy="boardShot1Direction" data-edit-label="分镜 01 · 镜头">固定中景 / 纸张遮挡转场</p>
+          <p class="board-note" data-copy="boardShot1Direction">固定中景 / 纸张遮挡转场</p>
         </li>
         <li class="board-shot">
-          <span class="board-shot-number" data-copy="boardShot2Number" data-edit-label="分镜 02 · 编号">02</span>
-          <h4 data-copy="boardShot2Title" data-edit-label="分镜 02 · 标题">接住海报</h4>
-          <p class="board-time" data-copy="boardShot2Time" data-edit-label="分镜 02 · 时间">2.3–4.7 s</p>
-          <p class="board-shot-action" data-copy="boardShot2Action" data-edit-label="分镜 02 · 动作">角色B接住海报，露出面容。
+          <span class="board-shot-number" data-copy="boardShot2Number">02</span>
+          <h4 data-copy="boardShot2Title">接住海报</h4>
+          <p class="board-time" data-copy="boardShot2Time">2.3–4.7 s</p>
+          <p class="board-shot-action" data-copy="boardShot2Action">角色B接住海报，露出面容。
 低头看画面，再抬眼望向街侧。</p>
-          <p class="board-note" data-copy="boardShot2Direction" data-edit-label="分镜 02 · 镜头">正面中近景 / 视线引导</p>
+          <p class="board-note" data-copy="boardShot2Direction">正面中近景 / 视线引导</p>
         </li>
         <li class="board-shot">
-          <span class="board-shot-number" data-copy="boardShot3Number" data-edit-label="分镜 03 · 编号">03</span>
-          <h4 data-copy="boardShot3Title" data-edit-label="分镜 03 · 标题">持报小跑</h4>
-          <p class="board-time" data-copy="boardShot3Time" data-edit-label="分镜 03 · 时间">4.7–6.4 s</p>
-          <p class="board-shot-action" data-copy="boardShot3Action" data-edit-label="分镜 03 · 动作">双手持报，沿街短距离小跑。
+          <span class="board-shot-number" data-copy="boardShot3Number">03</span>
+          <h4 data-copy="boardShot3Title">持报小跑</h4>
+          <p class="board-time" data-copy="boardShot3Time">4.7–6.4 s</p>
+          <p class="board-shot-action" data-copy="boardShot3Action">双手持报，沿街短距离小跑。
 头发与裙摆随步伐摆动。</p>
-          <p class="board-note" data-copy="boardShot3Direction" data-edit-label="分镜 03 · 镜头">侧面跟拍 / 动作加速</p>
+          <p class="board-note" data-copy="boardShot3Direction">侧面跟拍 / 动作加速</p>
         </li>
         <li class="board-shot">
-          <span class="board-shot-number" data-copy="boardShot4Number" data-edit-label="分镜 04 · 编号">04</span>
-          <h4 data-copy="boardShot4Title" data-edit-label="分镜 04 · 标题">擦肩跌落</h4>
-          <p class="board-time" data-copy="boardShot4Time" data-edit-label="分镜 04 · 时间">6.4–8.8 s</p>
-          <p class="board-shot-action" data-copy="boardShot4Action" data-edit-label="分镜 04 · 动作">与男性路人擦肩后失衡。
+          <span class="board-shot-number" data-copy="boardShot4Number">04</span>
+          <h4 data-copy="boardShot4Title">擦肩跌落</h4>
+          <p class="board-time" data-copy="boardShot4Time">6.4–8.8 s</p>
+          <p class="board-shot-action" data-copy="boardShot4Action">与男性路人擦肩后失衡。
 海报脱手，双手撑地。</p>
-          <p class="board-note" data-copy="boardShot4Direction" data-edit-label="分镜 04 · 镜头">中景下移 / 保留动作衔接</p>
+          <p class="board-note" data-copy="boardShot4Direction">中景下移 / 保留动作衔接</p>
         </li>
         <li class="board-shot">
-          <span class="board-shot-number" data-copy="boardShot5Number" data-edit-label="分镜 05 · 编号">05</span>
-          <h4 data-copy="boardShot5Title" data-edit-label="分镜 05 · 标题">海报落地</h4>
-          <p class="board-time" data-copy="boardShot5Time" data-edit-label="分镜 05 · 时间">8.8–11.4 s</p>
-          <p class="board-shot-action" data-copy="boardShot5Action" data-edit-label="分镜 05 · 动作">海报平落路面，人物退至边缘。
+          <span class="board-shot-number" data-copy="boardShot5Number">05</span>
+          <h4 data-copy="boardShot5Title">海报落地</h4>
+          <p class="board-time" data-copy="boardShot5Time">8.8–11.4 s</p>
+          <p class="board-shot-action" data-copy="boardShot5Action">海报平落路面，人物退至边缘。
 镜头贴地，将注意力交给画面。</p>
-          <p class="board-note" data-copy="boardShot5Direction" data-edit-label="分镜 05 · 镜头">低机位 / 焦点转移</p>
+          <p class="board-note" data-copy="boardShot5Direction">低机位 / 焦点转移</p>
         </li>
         <li class="board-shot">
-          <span class="board-shot-number" data-copy="boardShot6Number" data-edit-label="分镜 06 · 编号">06</span>
-          <h4 data-copy="boardShot6Title" data-edit-label="分镜 06 · 标题">产品定格</h4>
-          <p class="board-time" data-copy="boardShot6Time" data-edit-label="分镜 06 · 时间">11.4–14.0 s</p>
-          <p class="board-shot-action" data-copy="boardShot6Action" data-edit-label="分镜 06 · 动作">海报逐渐立起，口红成为中心。
+          <span class="board-shot-number" data-copy="boardShot6Number">06</span>
+          <h4 data-copy="boardShot6Title">产品定格</h4>
+          <p class="board-time" data-copy="boardShot6Time">11.4–14.0 s</p>
+          <p class="board-shot-action" data-copy="boardShot6Action">海报逐渐立起，口红成为中心。
 推近品牌画面，停留收尾。</p>
-          <p class="board-note" data-copy="boardShot6Direction" data-edit-label="分镜 06 · 镜头">缓慢推进 / 品牌落版</p>
+          <p class="board-note" data-copy="boardShot6Direction">缓慢推进 / 品牌落版</p>
         </li>
       </ol>
     </section>
     <section class="board-materials">
-      <h3 data-copy="boardMaterialsTitle" data-edit-label="素材 · 标题">03 素材准备</h3>
-      <p class="board-note" data-copy="boardMaterialsIntro" data-edit-label="素材 · 说明">先锁定人物与产品，再统一场景光线</p>
+      <h3 data-copy="boardMaterialsTitle">03 素材准备</h3>
+      <p class="board-note" data-copy="boardMaterialsIntro">先锁定人物与产品，再统一场景光线</p>
       <article class="board-material">
         <img data-board-image="a" data-image-label="角色 A" width="316" height="237" alt="角色 A 的正面、侧面和全身造型" loading="lazy" decoding="async">
         <div>
-          <h4 data-copy="boardCharacterATitle" data-edit-label="角色 A · 标题">A / 事件起点</h4>
-          <p class="board-note" data-copy="boardCharacterAStyle" data-edit-label="角色 A · 造型">黑色收腰套装 · 透明框眼镜 · 低发髻</p>
-          <p class="board-note" data-copy="boardCharacterAAction" data-edit-label="角色 A · 动作">动作：抱纸叠 / 躲避飞纸 / 抬手遮挡</p>
+          <h4 data-copy="boardCharacterATitle">A / 事件起点</h4>
+          <p class="board-note" data-copy="boardCharacterAStyle">黑色收腰套装 · 透明框眼镜 · 低发髻</p>
+          <p class="board-note" data-copy="boardCharacterAAction">动作：抱纸叠 / 躲避飞纸 / 抬手遮挡</p>
         </div>
       </article>
       <article class="board-material">
         <img data-board-image="b" data-image-label="角色 B" width="316" height="237" alt="角色 B 的正面、侧面和全身造型" loading="lazy" decoding="async">
         <div>
-          <h4 data-copy="boardCharacterBTitle" data-edit-label="角色 B · 标题">B / 叙事主角</h4>
-          <p class="board-note" data-copy="boardCharacterBStyle" data-edit-label="角色 B · 造型">黑绒西装 · 百褶短裙 · 发箍与珍珠</p>
-          <p class="board-note" data-copy="boardCharacterBAction" data-edit-label="角色 B · 动作">动作：接报 / 小跑 / 擦肩失衡 / 撑地</p>
+          <h4 data-copy="boardCharacterBTitle">B / 叙事主角</h4>
+          <p class="board-note" data-copy="boardCharacterBStyle">黑绒西装 · 百褶短裙 · 发箍与珍珠</p>
+          <p class="board-note" data-copy="boardCharacterBAction">动作：接报 / 小跑 / 擦肩失衡 / 撑地</p>
         </div>
       </article>
       <article class="board-material board-prop">
         <img data-board-image="c" data-image-label="产品海报" width="215" height="341" alt="GUCCI 口红海报" loading="lazy" decoding="async">
         <div>
-          <h4 data-copy="boardPropTitle" data-edit-label="道具 · 标题">C / 产品与核心道具</h4>
-          <p class="board-anchor" data-copy="boardPropAnchor" data-edit-label="道具 · 小标题">视觉锚点</p>
-          <p class="board-note" data-copy="boardPropStyle" data-edit-label="道具 · 视觉元素">酒红海报 · 金色管身 · GUCCI 标识</p>
-          <p class="board-note board-prop-detail" data-copy="boardPropAction" data-edit-label="道具 · 连贯性">同一海报贯穿飞起、手持与落地。
+          <h4 data-copy="boardPropTitle">C / 产品与核心道具</h4>
+          <p class="board-anchor" data-copy="boardPropAnchor">视觉锚点</p>
+          <p class="board-note" data-copy="boardPropStyle">酒红海报 · 金色管身 · GUCCI 标识</p>
+          <p class="board-note board-prop-detail" data-copy="boardPropAction">同一海报贯穿飞起、手持与落地。
 锁定口红形态、版式与品牌字样。</p>
         </div>
       </article>
       <dl class="board-production">
-        <dt data-copy="boardExtraLabel" data-edit-label="补充素材 · 标题">补充素材</dt>
-        <dd data-copy="boardExtraBody" data-edit-label="补充素材 · 内容">石砌街景与台阶 / 黑色铁栏杆 / 黄色出租车 / 深色西装男性路人 / 同款海报纸叠</dd>
-        <dt data-copy="boardControlLabel" data-edit-label="制作控制 · 标题">制作控制</dt>
-        <dd data-copy="boardControlBody" data-edit-label="制作控制 · 内容">人物与服装一致 · 海报正反与朝向连续 · 手部接触自然 · 日光方向统一 · 末帧产品清晰</dd>
+        <dt data-copy="boardExtraLabel">补充素材</dt>
+        <dd data-copy="boardExtraBody">石砌街景与台阶 / 黑色铁栏杆 / 黄色出租车 / 深色西装男性路人 / 同款海报纸叠</dd>
+        <dt data-copy="boardControlLabel">制作控制</dt>
+        <dd data-copy="boardControlBody">人物与服装一致 · 海报正反与朝向连续 · 手部接触自然 · 日光方向统一 · 末帧产品清晰</dd>
       </dl>
     </section>
   </div>
@@ -744,67 +680,67 @@
   <img data-portfolio-image="0" alt="">
   <div class="product-story">
     <section class="product-panel product-background">
-      <small data-copy="productBackgroundLabel" data-edit-label="项目背景 · 小标题">01 / PROJECT BACKGROUND</small>
-      <h2><span data-copy="productBackgroundTitle1" data-edit-label="项目背景 · 标题第一行">自由表达。</span><br><span data-copy="productBackgroundTitle2" data-edit-label="项目背景 · 标题第二行">镜头随行</span><span class="product-red" data-copy="productBackgroundPunctuation" data-edit-label="项目背景 · 标题标点">。</span></h2>
-      <p class="product-lead" data-copy="productBackgroundLead" data-edit-label="项目背景 · 导语">本项目围绕寻影 Me AI 智能跟随手机支架展开美国站电商视觉设计，面向独自拍摄的内容创作者，将人物跟随、便捷操作与便携使用转化为直观的场景叙事。以黑红建立品牌识别，以浅蓝与白色承载功能说明，帮助消费者理解产品如何参与日常创作，并判断是否适合自己的拍摄需求。</p>
+      <small data-copy="productBackgroundLabel">01 / PROJECT BACKGROUND</small>
+      <h2><span data-copy="productBackgroundTitle1">自由表达。</span><br><span data-copy="productBackgroundTitle2">镜头随行</span><span class="product-red" data-copy="productBackgroundPunctuation">。</span></h2>
+      <p class="product-lead" data-copy="productBackgroundLead">本项目围绕寻影 Me AI 智能跟随手机支架展开美国站电商视觉设计，面向独自拍摄的内容创作者，将人物跟随、便捷操作与便携使用转化为直观的场景叙事。以黑红建立品牌识别，以浅蓝与白色承载功能说明，帮助消费者理解产品如何参与日常创作，并判断是否适合自己的拍摄需求。</p>
       <div class="product-columns">
-        <article><h3 data-copy="productAudienceTitle" data-edit-label="目标用户 · 标题">目标用户</h3><p data-copy="productAudienceBody" data-edit-label="目标用户 · 正文">独立内容创作者、舞蹈与健身记录者，以及需要手机视频讲解的人群。以上为设计定位假设。</p></article>
-        <article><h3 data-copy="productBarrierTitle" data-edit-label="使用障碍 · 标题">使用障碍</h3><p data-copy="productBarrierBody" data-edit-label="使用障碍 · 正文">固定机位难以配合横向移动；独自拍摄时，调整构图与操作设备容易打断表达。</p></article>
-        <article><h3 data-copy="productGoalTitle" data-edit-label="设计目标 · 标题">设计目标</h3><p data-copy="productGoalBody" data-edit-label="设计目标 · 正文">先让用户理解跟随价值，再解释操作方法，最后用适配条件和包装清单支持购买判断。</p></article>
+        <article><h3 data-copy="productAudienceTitle">目标用户</h3><p data-copy="productAudienceBody">独立内容创作者、舞蹈与健身记录者，以及需要手机视频讲解的人群。以上为设计定位假设。</p></article>
+        <article><h3 data-copy="productBarrierTitle">使用障碍</h3><p data-copy="productBarrierBody">固定机位难以配合横向移动；独自拍摄时，调整构图与操作设备容易打断表达。</p></article>
+        <article><h3 data-copy="productGoalTitle">设计目标</h3><p data-copy="productGoalBody">先让用户理解跟随价值，再解释操作方法，最后用适配条件和包装清单支持购买判断。</p></article>
       </div>
     </section>
     <section class="product-panel product-strategy">
-      <small data-copy="productStrategyLabel" data-edit-label="设计策略 · 小标题">02 / STRATEGY</small>
-      <h2 data-copy="productStrategyTitle" data-edit-label="设计策略 · 标题">从使用任务，走向购买理由。</h2>
+      <small data-copy="productStrategyLabel">02 / STRATEGY</small>
+      <h2 data-copy="productStrategyTitle">从使用任务，走向购买理由。</h2>
       <div class="product-columns">
-        <article><h3 data-copy="productValueTitle" data-edit-label="看见价值 · 标题">01 看见价值</h3><p data-copy="productValueBody" data-edit-label="看见价值 · 正文">AI 人物跟随：用人物动作与产品关系表达独自拍摄的自由度。</p></article>
-        <article><h3 data-copy="productOperationTitle" data-edit-label="理解操作 · 标题">02 理解操作</h3><p data-copy="productOperationBody" data-edit-label="理解操作 · 正文">无需专用跟随 App、无需蓝牙配对、手势控制。每张图只传递一个主要信息。</p></article>
-        <article><h3 data-copy="productFitTitle" data-edit-label="判断适配 · 标题">03 判断适配</h3><p data-copy="productFitBody" data-edit-label="判断适配 · 正文">便携设计、手机宽度与重量限制、1/4 英寸接口与包装内容，减少模糊承诺。</p></article>
+        <article><h3 data-copy="productValueTitle">01 看见价值</h3><p data-copy="productValueBody">AI 人物跟随：用人物动作与产品关系表达独自拍摄的自由度。</p></article>
+        <article><h3 data-copy="productOperationTitle">02 理解操作</h3><p data-copy="productOperationBody">无需专用跟随 App、无需蓝牙配对、手势控制。每张图只传递一个主要信息。</p></article>
+        <article><h3 data-copy="productFitTitle">03 判断适配</h3><p data-copy="productFitBody">便携设计、手机宽度与重量限制、1/4 英寸接口与包装内容，减少模糊承诺。</p></article>
       </div>
-      <p class="product-note" data-copy="productStrategyNote" data-edit-label="设计策略 · 注释">叙事采用 JTBD；单图按功能→优势→收益→证据组织。仅支持人物水平跟随，不表达自动俯仰或无限 360° 旋转。</p>
+      <p class="product-note" data-copy="productStrategyNote">叙事采用 JTBD；单图按功能→优势→收益→证据组织。仅支持人物水平跟随，不表达自动俯仰或无限 360° 旋转。</p>
     </section>
   </div>
   <section class="product-panel product-light">
-    <small data-copy="productListingLabel" data-edit-label="电商图组 · 小标题">04 / LISTING GALLERY</small>
-    <h2 data-copy="productListingTitle" data-edit-label="电商图组 · 标题">完整电商图组。</h2>
+    <small data-copy="productListingLabel">04 / LISTING GALLERY</small>
+    <h2 data-copy="productListingTitle">完整电商图组。</h2>
     <div class="product-grid">
-      <figure><img data-portfolio-image="1" alt=""><figcaption data-copy="productCaption1" data-edit-label="电商图 01 · 图注">01 / 白底主图</figcaption></figure>
-      <figure><img data-portfolio-image="2" alt=""><figcaption data-copy="productCaption2" data-edit-label="电商图 02 · 图注">02 / AI跟随</figcaption></figure>
-      <figure><img data-portfolio-image="3" alt=""><figcaption data-copy="productCaption3" data-edit-label="电商图 03 · 图注">03 / 无需配对</figcaption></figure>
-      <figure><img data-portfolio-image="4" alt=""><figcaption data-copy="productCaption4" data-edit-label="电商图 04 · 图注">04 / 手势控制</figcaption></figure>
-      <figure><img data-portfolio-image="5" alt=""><figcaption data-copy="productCaption5" data-edit-label="电商图 05 · 图注">05 / 跟随机制</figcaption></figure>
-      <figure><img data-portfolio-image="6" alt=""><figcaption data-copy="productCaption6" data-edit-label="电商图 06 · 图注">06 / 便携设计</figcaption></figure>
-      <figure><img data-portfolio-image="7" alt=""><figcaption data-copy="productCaption7" data-edit-label="电商图 07 · 图注">07 / 手机适配</figcaption></figure>
-      <figure><img data-portfolio-image="8" alt=""><figcaption data-copy="productCaption8" data-edit-label="电商图 08 · 图注">08 / 包装内容</figcaption></figure>
+      <figure><img data-portfolio-image="1" alt=""><figcaption data-copy="productCaption1">01 / 白底主图</figcaption></figure>
+      <figure><img data-portfolio-image="2" alt=""><figcaption data-copy="productCaption2">02 / AI跟随</figcaption></figure>
+      <figure><img data-portfolio-image="3" alt=""><figcaption data-copy="productCaption3">03 / 无需配对</figcaption></figure>
+      <figure><img data-portfolio-image="4" alt=""><figcaption data-copy="productCaption4">04 / 手势控制</figcaption></figure>
+      <figure><img data-portfolio-image="5" alt=""><figcaption data-copy="productCaption5">05 / 跟随机制</figcaption></figure>
+      <figure><img data-portfolio-image="6" alt=""><figcaption data-copy="productCaption6">06 / 便携设计</figcaption></figure>
+      <figure><img data-portfolio-image="7" alt=""><figcaption data-copy="productCaption7">07 / 手机适配</figcaption></figure>
+      <figure><img data-portfolio-image="8" alt=""><figcaption data-copy="productCaption8">08 / 包装内容</figcaption></figure>
     </div>
   </section>
   <section class="product-panel product-light">
-    <small data-copy="productPlusLabel" data-edit-label="A+ 内容 · 小标题">05 / A+ CONTENT</small>
-    <h2 data-copy="productPlusTitle" data-edit-label="A+ 内容 · 标题">从创作场景，延伸到使用体验。</h2>
+    <small data-copy="productPlusLabel">05 / A+ CONTENT</small>
+    <h2 data-copy="productPlusTitle">从创作场景，延伸到使用体验。</h2>
     <div class="product-wide">
       <img data-portfolio-image="9" alt="">
       <img data-portfolio-image="10" alt="">
       <img data-portfolio-image="11" alt="">
     </div>
     <div class="product-columns product-facts" lang="en">
-      <article><h3 data-copy="productSizeTitle" data-edit-label="手机适配 · 标题">Fit before you film.</h3><p data-copy="productSizeBody" data-edit-label="手机适配 · 参数">Phone width: 55–84 mm
+      <article><h3 data-copy="productSizeTitle">Fit before you film.</h3><p data-copy="productSizeBody">Phone width: 55–84 mm
 Thickness: ≤10.5 mm
 Phone weight: 130–270 g</p></article>
-      <article><h3 data-copy="productTrackingTitle" data-edit-label="跟随范围 · 标题">Know your tracking.</h3><p data-copy="productTrackingBody" data-edit-label="跟随范围 · 参数">Horizontal pan: ±150°
+      <article><h3 data-copy="productTrackingTitle">Know your tracking.</h3><p data-copy="productTrackingBody">Horizontal pan: ±150°
 Person tracking only
 Recommended distance: 0.5–3 m</p></article>
-      <article><h3 data-copy="productEquipmentTitle" data-edit-label="设备信息 · 标题">Make room to create.</h3><p data-copy="productEquipmentBody" data-edit-label="设备信息 · 参数">Foldable design
+      <article><h3 data-copy="productEquipmentTitle">Make room to create.</h3><p data-copy="productEquipmentBody">Foldable design
 1/4-inch tripod interface
 Phone and scene props not included</p></article>
     </div>
   </section>
   <div class="product-credits">
     <details>
-      <summary data-copy="productNotesTitle" data-edit-label="设计说明 · 标题">设计说明与核验依据</summary>
-      <p data-copy="productNotesBody" data-edit-label="设计说明 · 正文">自主概念设计，非官方委托。AI 辅助生成的产品局部结构、人物与设备朝向仍需实物素材校准；手机及场景道具不包含在商品内。A+ 需按后台模块适配，当前不是上架终稿。</p>
-      <p><a href="https://www.obsbot.com/obsbot-me-auto-tracking-phone-mount/specs" data-copy="productSpecsLink" data-edit-label="官方规格 · 链接文字">官方规格</a> · <a href="https://www.obsbot.com/obsbot-me-auto-tracking-phone-mount/faq" data-copy="productFaqLink" data-edit-label="官方 FAQ · 链接文字">官方FAQ</a></p>
+      <summary data-copy="productNotesTitle">设计说明与核验依据</summary>
+      <p data-copy="productNotesBody">自主概念设计，非官方委托。AI 辅助生成的产品局部结构、人物与设备朝向仍需实物素材校准；手机及场景道具不包含在商品内。A+ 需按后台模块适配，当前不是上架终稿。</p>
+      <p><a href="https://www.obsbot.com/obsbot-me-auto-tracking-phone-mount/specs" data-copy="productSpecsLink">官方规格</a> · <a href="https://www.obsbot.com/obsbot-me-auto-tracking-phone-mount/faq" data-copy="productFaqLink">官方FAQ</a></p>
     </details>
-    <p class="product-signoff" data-copy="productSignoff" data-edit-label="作品集 · 页脚">OBSBOT Me / 电商视觉设计 · V3</p>
+    <p class="product-signoff" data-copy="productSignoff">OBSBOT Me / 电商视觉设计 · V3</p>
   </div>
 </section>
     <nav class="project-nav" aria-label="Projects">
@@ -824,34 +760,6 @@ Phone and scene props not included</p></article>
     </div>
   </footer>
 
-  <button class="edit-launch" type="button" lang="zh-CN" aria-haspopup="dialog">
-    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 12.5 9-9 3.5 3.5-9 9L3 17l1-4.5Zm7.8-7.8 3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    编辑页面
-  </button>
-  <dialog class="editor" lang="zh-CN" aria-labelledby="editor-title">
-    <header class="edit-header">
-      <h2 id="editor-title">编辑页面</h2>
-      <button class="dialog-close" type="button" aria-label="关闭编辑">
-        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10m0-10L5 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-      </button>
-      <div class="edit-tabs" aria-label="编辑内容">
-        <button type="button" aria-pressed="true" aria-controls="edit-text">文字</button>
-        <button type="button" aria-pressed="false" aria-controls="edit-images">图片</button>
-        <button type="button" aria-pressed="false" aria-controls="edit-gallery">项目 01 图集</button>
-        <button type="button" aria-pressed="false" aria-controls="edit-gallery-02">项目 02 图集</button>
-      </div>
-    </header>
-    <div class="edit-body">
-      <div id="edit-text"></div>
-      <div id="edit-images" hidden></div>
-      <div id="edit-gallery" hidden></div>
-      <div id="edit-gallery-02" hidden></div>
-    </div>
-    <footer class="edit-footer">
-      <p class="edit-status" role="status">修改会自动保存到当前浏览器。</p>
-      <button class="pill edit-download" type="button">下载编辑后的 HTML</button>
-    </footer>
-  </dialog>
 
   <template id="work-template">
     <a class="work" href="#projects">
@@ -974,7 +882,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
   <script type="application/octet-stream" id="reel-poster" data-source="./asset-reel-poster.webp"></script>
   <script type="application/octet-stream" id="reel-video" data-source="./asset-reel-video.mp4"></script>
   <script>
-function createPortfolioCarousel(rail, cards, editor, copy) {
+function createPortfolioCarousel(rail, cards, copy) {
   const controls = rail.closest('section');
   const track = rail.querySelector('.carousel-track');
   const toggle = controls.querySelector('.carousel-toggle');
@@ -1208,14 +1116,14 @@ function createPortfolioCarousel(rail, cards, editor, copy) {
   let lastTime;
   function tick(time) {
     animationFrame = 0;
-    if (!inView || document.hidden || editor.open) { lastTime = undefined; return; }
+    if (!inView || document.hidden) { lastTime = undefined; return; }
     const dt = lastTime === undefined ? 0 : clamp((time - lastTime) / 1000, 0, .07);
     lastTime = time;
     if (dragNeedsPaint) {
       dragNeedsPaint = false;
       paint();
     }
-    if (width && !document.hidden && !editor.open && !drag) {
+    if (width && !document.hidden && !drag) {
       if (slide) {
         const progress = clamp((time - slide.since) / 310, 0, 1);
         position = slide.from + (slide.to - slide.from) * (1 - (1 - progress) ** 3);
@@ -1243,19 +1151,14 @@ function createPortfolioCarousel(rail, cards, editor, copy) {
   new ResizeObserver(measure).observe(rail);
   new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; if (inView) wakeCarousel(); }, {rootMargin: '100px'}).observe(rail);
   document.addEventListener('visibilitychange', wakeCarousel);
-  editor.addEventListener('close', wakeCarousel);
   measure();
   wakeCarousel();
   return {show, updateControlCopy};
 }
 
-function createPortfolioGallery(view, pane, entries, assets, actions) {
+function createPortfolioGallery(view, entries, assets, actions) {
   const originals = new Map(assets.map(asset => [asset.asset, asset]));
   const urls = new Map();
-  const collator = new Intl.Collator('zh-CN', {numeric: true});
-  let previous = null;
-  let busy = false;
-  let editorReady = false;
 
   function imageInfo(entry) {
     return entry.src ? entry : originals.get(entry.asset);
@@ -1271,16 +1174,15 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
     }
     return urls.get(entry.asset);
   }
-  function makeImage(entry, {thumbnail = false, eager = false} = {}) {
+  function makeImage(entry, {eager = false} = {}) {
     const info = imageInfo(entry);
     const image = new Image(info.width, info.height);
     image.dataset.imageName = info.name;
     if (entry.asset) image.dataset.asset = entry.asset;
-    image.alt = thumbnail ? '' : '项目图片 ' + info.name;
+    image.alt = '项目图片 ' + info.name;
     image.loading = eager ? 'eager' : 'lazy';
     image.decoding = 'async';
     image.draggable = false;
-    if (thumbnail) image.className = 'edit-thumb gallery-thumb';
     image.src = imageUrl(entry, info);
     return image;
   }
@@ -1290,173 +1192,7 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
     view.replaceChildren(...visibleEntries.map((entry, index) => makeImage(entry, {eager: index === 0})));
   }
 
-  function button(text, click, label = text) {
-    const control = document.createElement('button');
-    control.type = 'button';
-    control.className = 'edit-small';
-    control.textContent = text;
-    control.setAttribute('aria-label', label);
-    control.addEventListener('click', click);
-    return control;
-  }
-  function picker(text, label, multiple, select) {
-    const control = document.createElement('label');
-    control.className = 'edit-small';
-    control.textContent = text;
-    const input = document.createElement('input');
-    input.className = 'sr-only';
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.multiple = multiple;
-    input.setAttribute('aria-label', label);
-    input.addEventListener('change', () => {
-      const files = Array.from(input.files);
-      input.value = '';
-      if (files.length) select(files);
-    });
-    control.append(input);
-    return {control, input};
-  }
-
-  function update(focusIndex) {
-    renderView();
-    if (editorReady) renderRows();
-    actions.changed();
-    if (focusIndex !== undefined) {
-      const row = rows.children[focusIndex];
-      row?.scrollIntoView({block: 'nearest'});
-      row?.querySelector('input[type=number]')?.focus({preventScroll: true});
-    }
-  }
-  function commit(edit, focusIndex) {
-    previous = entries.slice();
-    edit();
-    update(focusIndex);
-  }
-  function move(from, to) {
-    if (busy || !Number.isInteger(to) || to < 0 || to >= entries.length || to === from) return false;
-    commit(() => {
-      const [entry] = entries.splice(from, 1);
-      entries.splice(to, 0, entry);
-    }, to);
-    return true;
-  }
-  async function upload(files, apply) {
-    if (busy) return;
-    busy = true;
-    for (const input of pane.querySelectorAll('button,input')) input.disabled = true;
-    actions.begin('正在处理项目图集图片…');
-    const images = [];
-    let failed = 0;
-    try {
-      for (const file of files.sort((a, b) => collator.compare(a.name, b.name))) {
-        try {
-          images.push({...await actions.prepare(file), name: file.name});
-        } catch {
-          failed++;
-        }
-      }
-      busy = false;
-      if (images.length) commit(() => apply(images));
-      else renderRows();
-      if (failed) actions.message('有 ' + failed + ' 张图片无法读取。请检查文件格式后重试。');
-    } finally {
-      if (busy) {
-        busy = false;
-        renderRows();
-      }
-      actions.end();
-    }
-  }
-
-  const title = document.createElement('h3');
-  title.textContent = '项目 ' + actions.projectNumber + ' · 详情图集';
-  const note = document.createElement('p');
-  note.className = 'edit-note';
-  note.textContent = '图片会按这里的顺序从上到下无缝排列。输入目标位置后点击「移动」。';
-  const tools = document.createElement('div');
-  tools.className = 'gallery-tools';
-  const add = picker('添加图片', '添加项目图集图片', true, files =>
-    upload(files, images => entries.push(...images)));
-  const restore = button('恢复导入图集', () => {
-    if (busy) return;
-    commit(() => entries.splice(0, entries.length, ...assets.map(({asset}) => ({asset}))));
-  });
-  const undo = button('撤销上一步', () => {
-    if (busy || !previous) return;
-    entries.splice(0, entries.length, ...previous);
-    previous = null;
-    update();
-  });
-  tools.append(add.control, restore, undo);
-  const rows = document.createElement('div');
-  rows.className = 'edit-images';
-  pane.append(title, note, tools, rows);
-
-  function makeRow(entry, index) {
-    const position = index + 1;
-    const row = document.createElement('div');
-    row.className = 'edit-image';
-    const details = document.createElement('div');
-    const caption = document.createElement('p');
-    caption.textContent = String(position).padStart(2, '0') + ' · ' + imageInfo(entry).name;
-    const options = document.createElement('div');
-    options.className = 'edit-image-actions';
-    const replace = picker('替换', '替换图集第 ' + position + ' 张图片', false, files =>
-      upload(files, ([image]) => { entries[index] = {...entries[index], ...image}; }));
-    const remove = button('移除', () => {
-      if (busy) return;
-      commit(() => entries.splice(index, 1));
-    }, '移除图集第 ' + position + ' 张图片');
-    options.append(replace.control, remove);
-
-    const order = document.createElement('div');
-    order.className = 'gallery-order';
-    const label = document.createElement('label');
-    label.textContent = '移到第';
-    const target = document.createElement('input');
-    target.type = 'number';
-    target.min = '1';
-    target.max = String(entries.length);
-    target.value = String(position);
-    target.setAttribute('aria-label', '图集第 ' + position + ' 张图片的目标位置');
-    label.append(target, '张');
-    const moveHere = () => {
-      if (!move(index, target.valueAsNumber - 1)) target.value = String(position);
-    };
-    const submit = button('移动', moveHere, '移动图集第 ' + position + ' 张图片');
-    target.addEventListener('keydown', event => {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        moveHere();
-      }
-    });
-    order.append(label, submit);
-    details.append(caption, options, order);
-    row.append(makeImage(entry, {thumbnail: true}), details);
-    return row;
-  }
-  function renderRows() {
-    add.input.disabled = busy;
-    undo.disabled = busy || !previous;
-    const sameAsImported = entries.length === assets.length &&
-      entries.every((entry, index) => !entry.src && entry.asset === assets[index].asset);
-    restore.disabled = busy || sameAsImported;
-    rows.replaceChildren(...entries.map(makeRow));
-    if (!entries.length) {
-      const empty = document.createElement('p');
-      empty.className = 'edit-note';
-      empty.textContent = '图集还没有图片。';
-      rows.append(empty);
-    }
-  }
-  function openEditor() {
-    if (editorReady) return;
-    editorReady = true;
-    renderRows();
-  }
-
-  return {renderView, openEditor};
+  return {renderView};
 }
 
 (() => {
@@ -1465,7 +1201,6 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
   const $ = (selector, root = document) => root.querySelector(selector);
   const home = $('#home');
   const detail = $('#project');
-  const editor = $('.editor');
   const tvcFilm = $('#tvc-film');
   const tvcDisplay = $('.tvc-display');
   const gucciFilm = $('#gucci-film');
@@ -1480,9 +1215,6 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
   const productPortfolio = $('#product-portfolio');
   const productAssets = JSON.parse($('#product-portfolio-data').textContent);
   const productImages = [...productPortfolio.querySelectorAll('[data-portfolio-image]')];
-  const editStatus = $('.edit-status');
-  const exportButton = $('.edit-download');
-  const exportRoot = document.documentElement.cloneNode(true);
   const embedded = JSON.parse($('#reel-customization').textContent);
   const draftKey = 'reelmark-editor:' + embedded.id;
   let draft;
@@ -1492,9 +1224,9 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
     // An exported file works even when the browser blocks local storage.
   }
   const galleryProjects = new Map([
-    [0, {storageKey: '02', panel: 'edit-gallery', assets: JSON.parse($('#ip-gallery-data').textContent)}],
+    [0, {storageKey: '02', assets: JSON.parse($('#ip-gallery-data').textContent)}],
     // Keep the newer model import separate from the original saved set.
-    [1, {storageKey: '01-v2', panel: 'edit-gallery-02', assets: JSON.parse($('#model-gallery-data').textContent)}]
+    [1, {storageKey: '01-v2', assets: JSON.parse($('#model-gallery-data').textContent)}]
   ]);
   function galleryEntries({storageKey, assets}) {
     const saved = draft?.galleries?.[storageKey] ?? embedded.galleries?.[storageKey];
@@ -1631,7 +1363,7 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
     paintMedia(media, index);
     return {link, media, face, title: $('.work-title', link), meta: $('.work-meta', link), captionIndex};
   });
-  const carousel = createPortfolioCarousel(carouselRail, cards, editor, copy);
+  const carousel = createPortfolioCarousel(carouselRail, cards, copy);
   const detailMedia = createMedia();
   const detailTitle = $('.detail-title');
   const detailDescription = $('.detail-description');
@@ -1966,433 +1698,21 @@ function createPortfolioGallery(view, pane, entries, assets, actions) {
   history.scrollRestoration = 'manual';
   window.addEventListener('hashchange', () => renderRoute(true));
 
-  let dirty = false;
-  let saveTimer;
-  function saveDraft() {
-    clearTimeout(saveTimer);
-    if (!dirty) return;
-    try {
-      localStorage.setItem(draftKey, JSON.stringify(custom));
-      dirty = false;
-      editStatus.textContent = '修改已保存到当前浏览器。';
-    } catch {
-      editStatus.textContent = '当前浏览器无法保存草稿。请下载 HTML 保留修改。';
-    }
-  }
-  function queueSave() {
-    dirty = true;
-    clearTimeout(saveTimer);
-    saveTimer = setTimeout(saveDraft, 280);
-  }
-  function textGroup(title, fields) {
-    const section = document.createElement('section');
-    section.className = 'edit-group';
-    const heading = document.createElement('h3');
-    heading.textContent = title;
-    section.append(heading);
-    for (const [key, label, fallback, multiline] of fields) {
-      const row = document.createElement('label');
-      row.className = 'edit-field';
-      const caption = document.createElement('span');
-      caption.textContent = label;
-      const input = document.createElement(multiline ? 'textarea' : 'input');
-      if (multiline) input.rows = 3;
-      input.maxLength = multiline ? 1500 : 180;
-      input.value = copy(key, fallback);
-      input.addEventListener('input', () => {
-        custom.text[key] = input.value;
-        renderCopy();
-        queueSave();
-      });
-      row.append(caption, input);
-      section.append(row);
-    }
-    $('#edit-text').append(section);
-    return section;
-  }
-  let textEditorReady = false, gucciTextGroup;
-  function buildTextEditor() {
-    if (textEditorReady) return;
-    textEditorReady = true;
-  textGroup('主页', [
-    ['brand', '品牌名称'], ['worldName', '主标题 · 前半部分'],
-    ['worldWord', '主标题 · 后半部分'], ['worldSubtitle', '中文副标题'], ['workLabel', '项目区标题'],
-    ['indexRange', '项目区编号范围', defaultRange], ['browserTitle', '浏览器标签标题（留空跟随主标题）', '']
-  ]);
-  textGroup('联系方式', [
-    ['contact', '联系按钮'], ['wechat', '微信一行'], ['email', '邮箱一行']
-  ]);
-  textGroup('项目页面', [
-    ['back', '返回项目按钮'], ['projectLabel', '项目编号前缀'], ['previous', '上一个项目'],
-    ['next', '下一个项目'], ['play', '播放按钮', 'Play preview'],
-    ['pause', '暂停按钮', 'Pause preview'], ['previewError', '预览错误提示', 'Preview unavailable'],
-    ['projectTotal', '详情页显示的项目总数', total]
-  ]);
-  projects.forEach((project, index) => {
-    const n = number(index);
-    if (index === gucciProject) {
-      gucciTextGroup = textGroup('项目 04 · 影片详情', [
-        ['gucciEyebrow', '项目 04 · 顶部小字'],
-        ['gucciTitle', '项目 04 · 详情主标题', gucciTitle, true],
-        ['gucciSubtitle', '项目 04 · 副标题', custom.text.projectDescription4 ?? gucciSubtitle, true],
-        ['gucciStory', '项目 04 · 正文', undefined, true],
-        ['gucciTag1', '项目 04 · 标签 1'], ['gucciTag2', '项目 04 · 标签 2'], ['gucciTag3', '项目 04 · 标签 3'],
-        ['gucciPlay', '项目 04 · 播放按钮'], ['gucciCaption', '项目 04 · 视频下方说明'],
-        ['projectTitle' + project.id, '项目 04 · 首页及导航标题', originalTitle(index)],
-        ['projectNumber' + index, '项目 04 · 首页编号', n]
-      ]);
-      textGroup('项目 04 · 动作分镜与素材准备', [...gucciBoard.querySelectorAll('[data-edit-label]')].map(node =>
-        [node.dataset.copy, node.dataset.editLabel, undefined, node.matches('p, dd')]));
-      return;
-    }
-    textGroup('项目 ' + n, [
-      ['projectNumber' + index, '项目 ' + n + ' · 显示编号', n],
-      ['projectTitle' + project.id, '项目 ' + n + ' · 标题', originalTitle(index)],
-      ['projectDescription' + project.id, '项目 ' + n + ' · 介绍', project.description, true]
-    ]);
-  });
-  textGroup('项目 05 · 寻影 Me 作品集', [...productPortfolio.querySelectorAll('[data-edit-label]')].map(node =>
-    [node.dataset.copy, node.dataset.editLabel, undefined, node.matches('p')]));
-  textGroup('辅助说明', [
-    ['carouselHelp', '轮播操作说明'], ['previousCover', '上一张封面按钮', 'Previous cover'],
-    ['nextCover', '下一张封面按钮', 'Next cover'], ['pauseCarousel', '暂停轮播提示', 'Pause auto-scroll'],
-    ['resumeCarousel', '继续轮播提示', 'Resume auto-scroll'], ['projectNavigation', '详情页导航说明', 'Projects']
-  ]);
-
-  }
-
-  async function prepareImage(file, maxWidth, maxHeight = maxWidth, limit = 160000) {
-    const url = URL.createObjectURL(file);
-    try {
-      const image = new Image();
-      image.src = url;
-      await image.decode();
-      if (!image.naturalWidth || !image.naturalHeight) throw new Error('Empty image');
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-      let scale = Math.min(1, maxWidth / image.naturalWidth, maxHeight / image.naturalHeight);
-      for (let attempt = 0; attempt < 8; attempt++) {
-        canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
-        canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
-        context.drawImage(image, 0, 0, canvas.width, canvas.height);
-        const source = canvas.toDataURL('image/webp', .85);
-        if (source.length <= limit) return {src: source, width: canvas.width, height: canvas.height};
-        scale *= .75;
-      }
-      throw new Error('Image could not be resized');
-    } finally {
-      URL.revokeObjectURL(url);
-    }
-  }
-
-  function paintArt(slot, thumb) {
-    const source = custom.images[slot.key];
-    const replacement = $('img', slot.art);
-    const original = $('svg', slot.art);
-    if (source) {
-      replacement.src = source;
-      const image = new Image();
-      image.alt = '';
-      image.src = source;
-      thumb.replaceChildren(image);
-    } else {
-      replacement.removeAttribute('src');
-      const mark = original.cloneNode(true);
-      mark.removeAttribute('hidden');
-      thumb.replaceChildren(mark);
-    }
-    replacement.hidden = !source;
-    original.toggleAttribute('hidden', Boolean(source));
-  }
-  const projectPreviews = {cover: [], detail: []};
-  function refreshProjectImages(index) {
-    const cover = coverSource(index);
-    const detail = index === tvcProject ? tvcPosterSource() : detailSource(index);
-    paintMedia(cards[index].media, index, cover);
-    if (projectPreviews.cover[index]) paintMedia(projectPreviews.cover[index], index, cover);
-    if (projectPreviews.detail[index]) paintMedia(projectPreviews.detail[index], index, detail);
-    if (index === tvcProject && tvcFilm.hasAttribute('src')) {
-      tvcFilm.poster = tvcPosterSource();
-    }
-    if (index === active && !detailFigure.hidden) {
-      stopPreview();
-      paintMedia(detailMedia, index, detail);
-    }
-  }
-  let pendingImages = 0;
-  function beginImageWork(message) {
-    pendingImages++;
-    exportButton.disabled = true;
-    editStatus.textContent = message;
-  }
-  function endImageWork() {
-    exportButton.disabled = --pendingImages > 0;
-  }
-  function saveImageChanges() {
-    dirty = true;
-    saveDraft();
-  }
-  function imageSlot(slot) {
-    const {key, label, index, kind, art} = slot;
-    const product = kind === 'product';
-    const filmPoster = kind === 'filmPoster';
-    const filmBoard = kind === 'filmBoard';
-    const standalone = product || filmPoster || filmBoard;
-    const item = document.createElement('div');
-    item.className = 'edit-image';
-    const media = art || standalone ? null : createMedia();
-    if (media) projectPreviews[kind][index] = media;
-    const thumb = media?.node ?? document.createElement(standalone ? 'img' : 'div');
-    thumb.classList.add('edit-thumb');
-    thumb.classList.toggle('art-thumb', Boolean(art));
-    if (standalone) {
-      thumb.classList.add('gallery-thumb');
-      thumb.alt = '';
-      thumb.loading = 'lazy';
-    }
-    thumb.setAttribute('aria-hidden', 'true');
-    const details = document.createElement('div');
-    const caption = document.createElement('p');
-    caption.textContent = label;
-    const actions = document.createElement('div');
-    actions.className = 'edit-image-actions';
-    const choose = document.createElement('label');
-    choose.className = 'edit-small';
-    choose.textContent = '替换图片';
-    const file = document.createElement('input');
-    file.type = 'file';
-    file.accept = 'image/*';
-    file.className = 'sr-only';
-    file.setAttribute('aria-label', '替换' + label);
-    const reset = document.createElement('button');
-    reset.type = 'button';
-    reset.className = 'edit-small';
-    reset.textContent = kind === 'detail' && index !== tvcProject ? '恢复跟随封面' : '恢复原图';
-    reset.setAttribute('aria-label', '恢复' + label + (kind === 'detail' && index !== tvcProject ? '跟随封面' : '原图'));
-
-    function renderImage() {
-      reset.hidden = !custom.images[key];
-      if (art) {
-        paintArt(slot, thumb);
-      } else if (product) {
-        thumb.src = productSource(index);
-        if (active === productProject) paintProductImage(index);
-      } else if (filmBoard) {
-        thumb.src = boardImages[index].src = boardImageSource(index);
-      } else if (filmPoster) {
-        const source = filmPosterSource();
-        thumb.src = source;
-        if (gucciFilm.getAttribute('poster') !== source) {
-          gucciFilm.poster = source;
-          if (gucciFilm.hasAttribute('src')) gucciFilm.load();
-        }
-      } else {
-        refreshProjectImages(index);
-      }
-    }
-    file.addEventListener('change', async () => {
-      const selected = file.files[0];
-      if (!selected) return;
-      file.disabled = reset.disabled = true;
-      beginImageWork('正在处理' + caption.textContent + '…');
-      try {
-        const image = await prepareImage(selected, art ? 512 : 1600);
-        custom.images[key] = image.src;
-        renderImage();
-        saveImageChanges();
-      } catch {
-        editStatus.textContent = '无法读取这张图片，请选择另一张。';
-      } finally {
-        file.value = '';
-        file.disabled = reset.disabled = false;
-        endImageWork();
-      }
-    });
-    reset.addEventListener('click', () => {
-      delete custom.images[key];
-      renderImage();
-      saveImageChanges();
-    });
-    choose.append(file);
-    actions.append(choose, reset);
-    details.append(caption, actions);
-    item.append(thumb, details);
-    renderImage();
-    return item;
-  }
-  function imageGroup(title, slots, note) {
-    const section = document.createElement('section');
-    section.className = 'edit-group';
-    const heading = document.createElement('h3');
-    heading.textContent = title;
-    section.append(heading);
-    if (note) {
-      const paragraph = document.createElement('p');
-      paragraph.className = 'edit-note';
-      paragraph.textContent = note;
-      section.append(paragraph);
-    }
-    const list = document.createElement('div');
-    list.className = 'edit-images';
-    slots.forEach(slot => list.append(imageSlot(slot)));
-    section.append(list);
-    $('#edit-images').append(section);
-    return section;
-  }
   for (const [key, selector] of [['logo', '.brand'], ['catArt', '.hero-cat'], ['flowerArt', '.hero-flower']]) {
-    if (custom.images[key]) paintArt({key, art: $(selector)}, document.createElement('div'));
-  }
-  let imageEditorReady = false, gucciImageGroup;
-  function buildImageEditor() {
-    if (imageEditorReady) return;
-    imageEditorReady = true;
-  imageGroup('品牌与插画', [
-    {key: 'logo', label: '品牌标志', art: $('.brand')},
-    {key: 'catArt', label: '小猫插画', art: $('.hero-cat')},
-    {key: 'flowerArt', label: '花朵插画', art: $('.hero-flower')}
-  ]);
-  imageGroup('首页项目封面', projects.map((project, index) => ({
-    key: 'cover' + project.id, label: '项目封面 ' + number(index), kind: 'cover', index
-  })));
-  imageGroup('项目详情图', projects.map((project, index) => ({
-    key: 'detail' + project.id, label: index === tvcProject ? '项目 03 视频封面' : '项目详情图 ' + number(index), kind: 'detail', index
-  })).filter(({index}) => index !== productProject && index !== gucciProject && !galleryProjects.has(index)),
-  '项目 03 的详情图用作视频封面。');
-  gucciImageGroup = imageGroup('项目 04 · 视频封面与分镜素材', [
-    {key: 'gucciPoster', label: '项目 04 视频封面', kind: 'filmPoster'},
-    ...boardImages.map((node, index) => ({
-      key: boardImageKey(index), label: '项目 04 分镜素材 · ' + node.dataset.imageLabel, kind: 'filmBoard', index
-    }))
-  ]);
-  }
-  let productImageGroup;
-  function openProductImages() {
-    productImageGroup ??= imageGroup('项目 05 · 寻影 Me 作品集图片', productAssets.map((asset, index) => ({
-      key: 'productPortfolio' + index,
-      label: '寻影 Me ' + number(index) + ' · ' + asset.name,
-      kind: 'product',
-      index
-    })));
+    if (!custom.images[key]) continue;
+    const art = $(selector);
+    const image = $('img', art);
+    image.src = custom.images[key];
+    image.hidden = false;
+    $('svg', art).setAttribute('hidden', '');
   }
   for (const [index, config] of galleryProjects) {
-    config.controller = createPortfolioGallery(detailGallery, document.getElementById(config.panel),
-      custom.galleries[config.storageKey], config.assets, {
-        projectNumber: number(index),
-        isActive: () => active === index,
-        selectEntries: index === 0 ? entries => entries.filter(entry => sectionForEntry(entry) === ipSection)
-          : index === 1 ? entries => entries.filter(entry => modelSectionForEntry(entry) === modelSection) : null,
-        begin: beginImageWork,
-        end: endImageWork,
-        changed: saveImageChanges,
-        message: message => { editStatus.textContent = message; },
-        prepare: file => prepareImage(file, 1920, 12000, 480000)
-      });
+    config.controller = createPortfolioGallery(detailGallery, custom.galleries[config.storageKey], config.assets, {
+      isActive: () => active === index,
+      selectEntries: index === 0 ? entries => entries.filter(entry => sectionForEntry(entry) === ipSection)
+        : entries => entries.filter(entry => modelSectionForEntry(entry) === modelSection)
+    });
   }
-  const tabs = [...editor.querySelectorAll('.edit-tabs button')];
-  function selectEditorTab(id) {
-    if (id === 'edit-text') buildTextEditor();
-    if (id === 'edit-images') buildImageEditor();
-    for (const tab of tabs) {
-      const panel = tab.getAttribute('aria-controls');
-      tab.setAttribute('aria-pressed', String(panel === id));
-      document.getElementById(panel).hidden = panel !== id;
-    }
-    for (const gallery of galleryProjects.values()) {
-      if (gallery.panel === id) gallery.controller.openEditor();
-    }
-    if (id === 'edit-images') openProductImages();
-    $('.edit-body').scrollTop = 0;
-    if (editor.open && active === gucciProject && id === 'edit-images') {
-      gucciImageGroup.scrollIntoView({block: 'start'});
-    }
-  }
-  for (const tab of tabs) {
-    tab.addEventListener('click', () => selectEditorTab(tab.getAttribute('aria-controls')));
-  }
-  $('.edit-launch').addEventListener('click', () => {
-    buildTextEditor();
-    video.pause();
-    gucciFilm.pause();
-    const gallery = galleryProjects.get(active);
-    if (gallery) selectEditorTab(gallery.panel);
-    if (active === productProject) selectEditorTab('edit-images');
-    if (active === gucciProject) selectEditorTab('edit-text');
-    editor.showModal();
-    if (active === productProject) productImageGroup.scrollIntoView({block: 'start'});
-    if (active === gucciProject) gucciTextGroup.scrollIntoView({block: 'start'});
-  });
-  $('.dialog-close', editor).addEventListener('click', () => editor.close());
-  editor.addEventListener('close', saveDraft);
-  window.addEventListener('pagehide', saveDraft);
-  // Download an independent HTML copy, including every hosted image and film.
-  async function inlineHostedAssets(root, downloadCustom) {
-    const cache = new Map();
-    function base64For(source) {
-      if (!cache.has(source)) cache.set(source, (async () => {
-        const response = await fetch(source);
-        if (!response.ok) throw new Error('资源读取失败');
-        const bytes = new Uint8Array(await response.arrayBuffer());
-        if (typeof bytes.toBase64 === 'function') return bytes.toBase64();
-        let binary = '';
-        for (let offset = 0; offset < bytes.length; offset += 32768) {
-          binary += String.fromCharCode(...bytes.subarray(offset, offset + 32768));
-        }
-        return btoa(binary);
-      })());
-      return cache.get(source);
-    }
-    await Promise.all(['model-gallery-data','ip-gallery-data','product-portfolio-data'].map(async id => {
-      const node = document.getElementById(id);
-      const entries = JSON.parse(node.textContent);
-      await Promise.all(entries.map(async entry => {
-        if (!entry.src || entry.base64) return;
-        entry.base64 = await base64For(entry.src);
-        delete entry.src;
-      }));
-      root.querySelector('#' + id).textContent = JSON.stringify(entries);
-    }));
-    await Promise.all([...root.querySelectorAll('script[type="application/octet-stream"][data-source]')].map(async node => {
-      if (node.textContent.trim()) return;
-      node.textContent = await base64For(node.dataset.source);
-    }));
-    await Promise.all([...root.querySelectorAll('img[data-standalone-mime]')].map(async node => {
-      node.setAttribute('data-storyboard-source', 'data:' + node.dataset.standaloneMime + ';base64,' + await base64For(node.dataset.storyboardSource));
-      node.removeAttribute('src');
-      node.removeAttribute('data-standalone-mime');
-    }));
-    await Promise.all(Object.entries(downloadCustom.images).map(async ([key, source]) => {
-      if (!source || source.startsWith('data:')) return;
-      const extension = source.split('.').pop().toLowerCase();
-      const mime = extension === 'jpg' ? 'image/jpeg' : extension === 'svg' ? 'image/svg+xml' : 'image/' + extension;
-      downloadCustom.images[key] = 'data:' + mime + ';base64,' + await base64For(source);
-    }));
-    root.querySelectorAll('link[data-hosted-preload]').forEach(node => node.remove());
-  }
-  exportButton.addEventListener('click', async () => {
-    const previousLabel = exportButton.textContent;
-    exportButton.disabled = true;
-    exportButton.textContent = '正在打包…';
-    try {
-      const downloadRoot = exportRoot.cloneNode(true);
-      const downloadCustom = structuredClone(custom);
-      await inlineHostedAssets(downloadRoot, downloadCustom);
-      const id = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
-      $('#reel-customization', downloadRoot).textContent = JSON.stringify({id, ...downloadCustom}).replaceAll('<', '\\u003c');
-      $('title', downloadRoot).textContent = siteTitle();
-      const html = '<!doctype html>\n' + downloadRoot.outerHTML;
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(new Blob([html], {type: 'text/html;charset=utf-8'}));
-      link.download = 'sunjues-world-edited.html';
-      link.click();
-      setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-      editStatus.textContent = '已下载包含全部图片和视频的 HTML。';
-    } catch {
-      editStatus.textContent = '下载未完成，请检查网络后重试。';
-    } finally {
-      exportButton.disabled = false;
-      exportButton.textContent = previousLabel;
-    }
-  });
 
   renderCopy();
   renderRoute(false);
