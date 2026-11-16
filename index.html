@@ -904,11 +904,11 @@ function createPortfolioCarousel(rail, cards, copy) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const count = cards.length;
   const coverRatio = 8 / 5;
-  const autoDelay = 3600;
+  const autoDelay = 2500;
   const wrap = value => ((value % count) + count) % count;
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
   let width = 0, cardWidth = 0, position = 0, animation = null, drag = null;
-  let frame = 0, timer = 0, inView = true, hovering = false, paused = false, ignoreClickUntil = 0;
+  let frame = 0, timer = 0, inView = true, paused = false, ignoreClickUntil = 0;
 
   function distanceFor(index) { return wrap(index - position + count / 2) - count / 2; }
   function paint() {
@@ -947,7 +947,7 @@ function createPortfolioCarousel(rail, cards, copy) {
     paint();
   }
   function canAutoPlay() {
-    return width && inView && !document.hidden && !paused && !hovering && !drag && !reduced.matches && !rail.matches(':focus-within');
+    return width && inView && !document.hidden && !paused && !drag;
   }
   function clearAuto() { clearTimeout(timer); timer = 0; }
   function scheduleAuto(delay = autoDelay) {
@@ -995,6 +995,9 @@ function createPortfolioCarousel(rail, cards, copy) {
     position = wrap(index);
     drag = null;
     delete rail.dataset.dragging;
+    paused = false;
+    toggle.setAttribute('aria-pressed', 'false');
+    updateControlCopy();
     measure();
     scheduleAuto();
   }
@@ -1007,20 +1010,16 @@ function createPortfolioCarousel(rail, cards, copy) {
     toggle.title = label;
   }
   function syncPauseButton() {
-    toggle.hidden = reduced.matches;
+    toggle.hidden = false;
     toggle.setAttribute('aria-pressed', String(paused));
     updateControlCopy();
-    if (reduced.matches) show(Math.round(position));
-    else scheduleAuto();
+    if (reduced.matches) suspend();
+    scheduleAuto();
   }
   previous.addEventListener('click', () => step(-1));
   next.addEventListener('click', () => step(1));
   toggle.addEventListener('click', () => { paused = !paused; syncPauseButton(); });
   reduced.addEventListener('change', syncPauseButton);
-  rail.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovering = true; clearAuto(); } });
-  rail.addEventListener('pointerleave', () => { hovering = false; scheduleAuto(); });
-  rail.addEventListener('focusin', clearAuto);
-  rail.addEventListener('focusout', () => scheduleAuto());
   rail.addEventListener('dragstart', event => event.preventDefault());
   rail.addEventListener('pointerdown', event => {
     if (!event.isPrimary || event.button !== 0 || !width || drag) return;
