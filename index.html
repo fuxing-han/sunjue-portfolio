@@ -326,26 +326,32 @@
     .tvc-display .project-film:not(:fullscreen) {aspect-ratio: 16 / 9; object-fit: contain}
     .detail-gallery {max-width: 1000px; margin-inline: auto; line-height: 0}
     .detail-gallery img {display: block; width: 100%; height: auto; margin: 0}
-    /* Project 01: direct access to three groups of original portfolio pages. */
+    /* Continuous portfolios with a sticky chapter directory. */
     body.ip-detail-view {background: linear-gradient(110deg, #f2f6f6 0%, #faf9f7 55%, #f9f6f3 100%)}
     .detail.is-ip {width: min(1440px, calc(100% - 2 * clamp(20px, 2.2vw, 40px)))}
-    .is-ip .detail-heading {gap: 18px; margin: 28px 0 32px}
+    .is-ip .detail-heading {gap: 18px; margin: 28px 0 36px}
     .is-ip .detail-eyebrow {color: #857d77; font-weight: 400; letter-spacing: .08em; text-transform: none}
-    .is-ip .detail h1, .detail.is-ip h1 {color: #292b29; font-size: clamp(34px, 4.3vw, 62px); font-weight: 500}
+    .detail.is-ip h1 {color: #292b29; font-size: clamp(34px, 4.3vw, 62px); font-weight: 500}
     .is-ip .detail-description {max-width: none; color: #79726c; font-size: clamp(15px, 1.4vw, 20px); line-height: 1.7}
-    .ip-sections {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-bottom: 40px; border-bottom: 1px solid #e3ddd7}
-    .ip-section {position: relative; display: flex; align-items: baseline; gap: 15px; padding: 7px 0 18px; color: #8b827b; text-decoration: none; font-size: clamp(14px, 1.25vw, 18px); line-height: 1.6}
-    .ip-section::after {content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: transparent}
-    .ip-section-number {flex: none; font-size: 13px; letter-spacing: .08em; font-variant-numeric: tabular-nums}
-    .ip-section:hover, .ip-section[aria-selected="true"] {color: #bd4c43}
-    .ip-section[aria-selected="true"]::after {background: #c85a50}
-    .ip-section:focus-visible {outline-color: #bd4c43; outline-offset: 5px}
-    .is-ip .detail-gallery {max-width: none}
-    @media (max-width: 640px) {
+    .is-ip .project-reading-layout {display: grid; grid-template-columns: 220px minmax(0, 1fr); align-items: start; gap: clamp(22px, 3vw, 42px)}
+    .ip-sections {grid-column: 1; grid-row: 1; position: sticky; top: 24px; display: grid; align-content: start; gap: 6px; max-height: calc(100svh - 48px); overflow-y: auto}
+    .portfolio-toc-label {margin: 0 0 14px 16px; color: #9a9088; font-size: 11px; letter-spacing: .16em}
+    .ip-section {position: relative; display: flex; align-items: baseline; gap: 12px; padding: 10px 12px 10px 16px; border-left: 1px solid #e3ddd7; color: #8b827b; text-decoration: none; font-size: 14px; line-height: 1.8}
+    .ip-section::after {content: ''; position: absolute; top: 0; bottom: 0; left: -1px; width: 2px; background: transparent}
+    .ip-section-number {flex: none; font-size: 12px; letter-spacing: .06em; font-variant-numeric: tabular-nums}
+    .ip-section:hover, .ip-section[aria-current="location"] {color: #bd4c43}
+    .ip-section[aria-current="location"]::after {background: #c85a50}
+    .ip-section:focus-visible {outline-color: #bd4c43; outline-offset: 3px}
+    .is-ip .detail-gallery {grid-column: 2; grid-row: 1; max-width: none; min-width: 0; width: 100%}
+    .portfolio-section {scroll-margin-top: 24px; margin: 0; padding: 0}
+    .portfolio-toc-toggle, .portfolio-toc-backdrop {display: none}
+    @media (max-width: 800px) {
       .is-ip .detail-heading {gap: 14px; margin-bottom: 26px}
-      .ip-sections {gap: 12px; margin-bottom: 24px}
-      .ip-section {display: grid; align-content: start; gap: 6px; padding-bottom: 13px; font-size: 13px; line-height: 1.6}
-      .ip-section-number {font-size: 11px}
+      .is-ip .project-reading-layout {display: block}
+      .is-ip .ip-sections {display: none; position: fixed; z-index: 31; top: auto; bottom: 78px; left: 14px; width: min(282px, calc(100vw - 28px)); max-height: calc(100svh - 120px); padding: 20px 16px; background: #faf9f7; border: 1px solid #e3ddd7; border-radius: 14px; box-shadow: 0 12px 45px rgb(40 40 30 / .12)}
+      body.toc-open .is-ip .ip-sections:not([hidden]) {display: grid}
+      .portfolio-toc-toggle:not([hidden]) {display: inline-flex; position: fixed; z-index: 32; left: 16px; bottom: max(20px, env(safe-area-inset-bottom)); gap: 8px; padding-inline: 17px; font-size: 13px; box-shadow: 0 4px 20px rgb(8 72 45 / .12)}
+      .portfolio-toc-backdrop:not([hidden]) {display: block; position: fixed; z-index: 30; inset: 0; border: 0; padding: 0; background: rgb(30 35 30 / .14)}
     }
     .product-portfolio {
       max-width: 1000px; margin-inline: auto; background: #101720; color: #fff; overflow-wrap: anywhere;
@@ -665,17 +671,23 @@
       </div>
     <img class="tvc-storyboard" id="tvc-storyboard-image" data-storyboard-source="./asset-tvc-storyboard.svg" data-standalone-mime="image/svg+xml" width="1440" height="1590" alt="ORGANIC EMOTION TVC 九宫格分镜解析：创意叙事、九个关键画面与视觉素材策略" loading="lazy" decoding="async">
     </figure>
-    <nav class="ip-sections" role="tablist" aria-label="品牌IP设计作品分类" hidden>
-      <a class="ip-section" id="ip-section-01" role="tab" href="#project-01/section-01" aria-controls="portfolio-gallery" aria-selected="true"><span class="ip-section-number">01</span><span>项目背景与IP设定</span></a>
-      <a class="ip-section" id="ip-section-02" role="tab" href="#project-01/section-02" aria-controls="portfolio-gallery" aria-selected="false" tabindex="-1"><span class="ip-section-number">02</span><span>IP日常及产品线海报</span></a>
-      <a class="ip-section" id="ip-section-03" role="tab" href="#project-01/section-03" aria-controls="portfolio-gallery" aria-selected="false" tabindex="-1"><span class="ip-section-number">03</span><span>物料延展与工作流总结</span></a>
+    <div class="project-reading-layout">
+    <nav id="project-01-contents" class="ip-sections" aria-label="品牌IP设计项目目录" hidden>
+      <p class="portfolio-toc-label">项目目录 / CONTENTS</p>
+      <a class="ip-section" id="ip-section-01" href="#project-01/section-01"><span class="ip-section-number">01</span><span>项目背景与IP设定</span></a>
+      <a class="ip-section" id="ip-section-02" href="#project-01/section-02"><span class="ip-section-number">02</span><span>IP日常及产品线海报</span></a>
+      <a class="ip-section" id="ip-section-03" href="#project-01/section-03"><span class="ip-section-number">03</span><span>物料延展与工作流总结</span></a>
     </nav>
-    <nav class="ip-sections model-sections" role="tablist" aria-label="AI模特与电商作品分类" hidden>
-      <a class="ip-section" id="model-section-01" role="tab" href="#project-02/section-01" aria-controls="portfolio-gallery" aria-selected="true"><span class="ip-section-number">01</span><span>项目背景与AI模特生成</span></a>
-      <a class="ip-section" id="model-section-02" role="tab" href="#project-02/section-02" aria-controls="portfolio-gallery" aria-selected="false" tabindex="-1"><span class="ip-section-number">02</span><span>双AI模特换装展示</span></a>
-      <a class="ip-section" id="model-section-03" role="tab" href="#project-02/section-03" aria-controls="portfolio-gallery" aria-selected="false" tabindex="-1"><span class="ip-section-number">03</span><span>场景延伸与项目总结</span></a>
+    <nav id="project-02-contents" class="ip-sections model-sections" aria-label="AI模特与电商项目目录" hidden>
+      <p class="portfolio-toc-label">项目目录 / CONTENTS</p>
+      <a class="ip-section" id="model-section-01" href="#project-02/section-01"><span class="ip-section-number">01</span><span>项目背景与AI模特生成</span></a>
+      <a class="ip-section" id="model-section-02" href="#project-02/section-02"><span class="ip-section-number">02</span><span>双AI模特换装展示</span></a>
+      <a class="ip-section" id="model-section-03" href="#project-02/section-03"><span class="ip-section-number">03</span><span>场景延伸与项目总结</span></a>
     </nav>
     <section class="detail-gallery" id="portfolio-gallery" hidden></section>
+    </div>
+    <button class="portfolio-toc-backdrop" type="button" aria-label="关闭项目目录" hidden></button>
+    <button class="pill portfolio-toc-toggle" type="button" aria-expanded="false" hidden>☰ <span>目录</span></button>
     <section class="product-portfolio" id="product-portfolio" aria-label="寻影 Me 电商视觉作品集" lang="zh-CN" hidden>
   <img data-portfolio-image="0" alt="">
   <div class="product-story">
@@ -1186,13 +1198,43 @@ function createPortfolioGallery(view, entries, assets, actions) {
     image.src = imageUrl(entry, info);
     return image;
   }
+  let observer;
+  function observeSections() {
+    observer?.disconnect();
+    observer = new IntersectionObserver(changes => {
+      if (!actions.isActive()) return;
+      const current = changes.find(entry => entry.isIntersecting);
+      if (current) actions.sectionChanged(Number(current.target.dataset.sectionIndex));
+    }, {rootMargin: '-72px 0px -' + Math.max(0, innerHeight - 144) + 'px 0px', threshold: 0});
+    if (view.dataset.galleryProject === actions.projectKey) [...view.children].forEach(section => observer.observe(section));
+  }
+  window.addEventListener('resize', () => { if (actions.isActive()) observeSections(); });
   function renderView() {
     if (view.hidden || !actions.isActive()) return;
-    const visibleEntries = actions.selectEntries ? actions.selectEntries(entries) : entries;
-    view.replaceChildren(...visibleEntries.map((entry, index) => makeImage(entry, {eager: index === 0})));
+    if (view.dataset.galleryProject === actions.projectKey && view.children.length) return;
+    observer?.disconnect();
+    const sections = actions.sectionTitles.map((title, index) => {
+      const section = document.createElement('div');
+      section.className = 'portfolio-section';
+      section.id = actions.projectKey + '-section-' + String(index + 1).padStart(2, '0');
+      section.dataset.sectionIndex = index;
+      section.setAttribute('role', 'region');
+      section.setAttribute('aria-label', title);
+      return section;
+    });
+    let first = true;
+    for (const entry of entries) {
+      const index = actions.sectionForEntry(entry);
+      if (!sections[index]) continue;
+      sections[index].append(makeImage(entry, {eager: first}));
+      first = false;
+    }
+    view.dataset.galleryProject = actions.projectKey;
+    view.replaceChildren(...sections);
+    observeSections();
   }
-
-  return {renderView};
+  function sectionStart(index) { return view.children[index]; }
+  return {renderView, sectionStart, disconnect: () => observer?.disconnect()};
 }
 
 (() => {
@@ -1371,10 +1413,10 @@ function createPortfolioGallery(view, entries, assets, actions) {
   const detailFigure = $('.detail-figure');
   const detailGallery = $('.detail-gallery');
   const ipSections = $('.ip-sections:not(.model-sections)');
-  const ipTabs = [...ipSections.querySelectorAll('[role="tab"]')];
+  const ipTabs = [...ipSections.querySelectorAll('.ip-section')];
   let ipSection = 0;
   const modelSections = $('.model-sections');
-  const modelTabs = [...modelSections.querySelectorAll('[role="tab"]')];
+  const modelTabs = [...modelSections.querySelectorAll('.ip-section')];
   let modelSection = 0;
   const modelPageSections = new Map(Array.from({length: 28}, (_, index) => {
     const page = index + 1;
@@ -1399,13 +1441,31 @@ function createPortfolioGallery(view, entries, assets, actions) {
     const page = Number(/^(?:.*?)(\d+)\.[^.]+$/.exec(entry.name ?? '')?.[1]);
     return page >= 1 && page <= 5 ? 0 : page === 6 ? 1 : 2;
   }
+  const tocToggle = $('.portfolio-toc-toggle');
+  const tocBackdrop = $('.portfolio-toc-backdrop');
+  function setTocOpen(open) {
+    document.body.classList.toggle('toc-open', open);
+    tocToggle.setAttribute('aria-expanded', String(open));
+    tocBackdrop.hidden = !open;
+  }
+  tocToggle.addEventListener('click', () => setTocOpen(!document.body.classList.contains('toc-open')));
+  tocBackdrop.addEventListener('click', () => setTocOpen(false));
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') setTocOpen(false); });
+  function setActiveSection(project, section) {
+    if (project === 0) ipSection = section;
+    else modelSection = section;
+    (project === 0 ? ipTabs : modelTabs).forEach((link, position) => {
+      if (position === section) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
   function bindSectionKeys(navigation, tabs) {
     navigation.addEventListener('keydown', event => {
-      const index = tabs.indexOf(event.target.closest('[role="tab"]'));
+      const index = tabs.indexOf(event.target.closest('.ip-section'));
       if (index < 0) return;
       let next;
-      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-      else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index + tabs.length - 1) % tabs.length;
       else if (event.key === 'Home') next = 0;
       else if (event.key === 'End') next = tabs.length - 1;
       else if (event.key === ' ') next = index;
@@ -1503,22 +1563,14 @@ function createPortfolioGallery(view, entries, assets, actions) {
     detailMedia.node.setAttribute('aria-label', title);
     detailGallery.setAttribute('aria-label', title + '图集');
     previous.hidden = active === 0;
-    const sectionTabs = active === 0 ? ipTabs : active === 1 ? modelTabs : null;
-    const currentSection = active === 0 ? ipSection : modelSection;
-    const followingSection = sectionTabs?.[currentSection + 1];
-    next.hidden = !followingSection && active === projects.length - 1;
-    next.classList.toggle('is-section-link', Boolean(followingSection));
-    $('small', next).textContent = followingSection ? '下一部分 →' : copy('next');
+    next.hidden = active === projects.length - 1;
+    next.classList.remove('is-section-link');
+    $('small', next).textContent = copy('next');
     if (!previous.hidden) {
       previous.href = routeFor(active - 1);
       $('strong', previous).textContent = titleFor(active - 1);
     }
-    if (followingSection) {
-      next.href = followingSection.getAttribute('href');
-      const sectionNumber = $('.ip-section-number', followingSection).textContent;
-      const sectionTitle = $('span:last-child', followingSection).textContent;
-      $('strong', next).textContent = sectionNumber + ' ' + sectionTitle;
-    } else if (!next.hidden) {
+    if (!next.hidden) {
       next.href = routeFor(active + 1);
       $('strong', next).textContent = titleFor(active + 1);
     }
@@ -1625,21 +1677,16 @@ function createPortfolioGallery(view, entries, assets, actions) {
     document.body.classList.toggle('ip-detail-view', showSections);
     ipSections.hidden = !showIp;
     modelSections.hidden = !showModel;
-    for (const [tabs, section] of [[ipTabs, ipSection], [modelTabs, modelSection]]) {
-      tabs.forEach((tab, position) => {
-        tab.setAttribute('aria-selected', String(position === section));
-        tab.tabIndex = position === section ? 0 : -1;
-      });
-    }
-    if (showSections) {
-      detailGallery.setAttribute('role', 'tabpanel');
-      detailGallery.setAttribute('aria-labelledby', activeTabs[activeSection].id);
-      detailGallery.tabIndex = 0;
-    } else {
-      detailGallery.removeAttribute('role');
-      detailGallery.removeAttribute('aria-labelledby');
-      detailGallery.removeAttribute('tabindex');
-    }
+    setActiveSection(0, ipSection);
+    setActiveSection(1, modelSection);
+    tocToggle.hidden = !showSections;
+    tocToggle.setAttribute('aria-controls', showIp ? ipSections.id : modelSections.id);
+    setTocOpen(false);
+    detailGallery.removeAttribute('aria-labelledby');
+    detailGallery.removeAttribute('tabindex');
+    if (showSections) detailGallery.setAttribute('role', 'region');
+    else detailGallery.removeAttribute('role');
+    for (const [position, config] of galleryProjects) if (position !== index) config.controller.disconnect();
     const gallery = galleryProjects.get(index);
     const showTvcFilm = index === tvcProject;
     tvcDisplay.hidden = !showTvcFilm;
@@ -1680,8 +1727,16 @@ function createPortfolioGallery(view, entries, assets, actions) {
     }
     renderDetailCopy();
     if (index >= 0) {
-      if (moveFocus) (showSections && oldIndex === index ? activeTabs[activeSection] : detailTitle).focus({preventScroll: true});
-      scrollTo(0, 0);
+      const requested = showIp ? ipRoute?.[1] : showModel ? modelRoute?.[1] : null;
+      if (requested) {
+        const section = Number(requested) - 1;
+        requestAnimationFrame(() => {
+          gallery.controller.sectionStart(section)?.scrollIntoView({block: 'start', behavior: 'instant'});
+        });
+      } else {
+        if (moveFocus && oldIndex !== index) detailTitle.focus({preventScroll: true});
+        scrollTo(0, 0);
+      }
     } else if (location.hash === '#home') {
       scrollTo(0, 0);
     } else if (oldIndex >= 0) {
@@ -1707,10 +1762,13 @@ function createPortfolioGallery(view, entries, assets, actions) {
     $('svg', art).setAttribute('hidden', '');
   }
   for (const [index, config] of galleryProjects) {
+    const links = index === 0 ? ipTabs : modelTabs;
     config.controller = createPortfolioGallery(detailGallery, custom.galleries[config.storageKey], config.assets, {
       isActive: () => active === index,
-      selectEntries: index === 0 ? entries => entries.filter(entry => sectionForEntry(entry) === ipSection)
-        : entries => entries.filter(entry => modelSectionForEntry(entry) === modelSection)
+      projectKey: routeFor(index).slice(1),
+      sectionTitles: links.map(link => link.lastElementChild.textContent),
+      sectionForEntry: index === 0 ? sectionForEntry : modelSectionForEntry,
+      sectionChanged: section => setActiveSection(index, section)
     });
   }
 
