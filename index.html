@@ -918,7 +918,7 @@ function createPortfolioCarousel(rail, cards, copy) {
       const distance = distanceFor(index);
       const scale = .58 + .42 * Math.exp(-.63 * distance * distance);
       const renderedWidth = cardWidth * scale;
-      const center = width / 2 + cardWidth * distance * (1 - .08 * Math.abs(distance));
+      const center = width / 2 + Math.max(cardWidth, width * .3) * distance * (1 - .08 * Math.abs(distance));
       const visibleWidth = Math.min(width, center + renderedWidth / 2) - Math.max(0, center - renderedWidth / 2);
       const visible = visibleWidth > 0;
       link.style.visibility = visible ? 'visible' : 'hidden';
@@ -1039,7 +1039,7 @@ function createPortfolioCarousel(rail, cards, copy) {
       rail.setPointerCapture(event.pointerId);
       rail.dataset.dragging = '';
     }
-    position = drag.start - dx / (cardWidth * .92);
+    position = drag.start - dx / (Math.max(cardWidth, width * .3) * .92);
     requestPaint();
   });
   function endDrag(event) {
