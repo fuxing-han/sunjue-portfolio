@@ -529,6 +529,7 @@
       <div class="detail-heading">
         <p class="eyebrow detail-eyebrow"><span data-copy="projectLabel">Project</span> <span class="detail-number"></span></p>
         <p class="eyebrow film-eyebrow" data-copy="gucciEyebrow" hidden>AIGC FILM / 2026</p>
+        <p class="eyebrow film-eyebrow guest-eyebrow" hidden>CHARACTER FILM / 2026</p>
         <h1 class="detail-title" tabindex="-1"></h1>
         <p class="detail-description"></p>
         <div class="film-copy" lang="zh-CN" hidden>
@@ -542,6 +543,19 @@
           </ul>
           <div class="film-action">
             <button type="button" class="film-cta" aria-controls="gucci-film"><span data-copy="gucciPlay">播放影片</span><span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+        <div class="film-copy guest-copy" lang="zh-CN" hidden>
+          <p class="film-story">一张月夜请柬，开启一场只属于你的相遇。
+以第一人称视角串联凝视、牵手与场景转换，
+探索动漫游戏风格中的角色叙事与情绪表达。</p>
+          <ul class="film-tags">
+            <li>18 秒短片</li>
+            <li>9:16 竖屏</li>
+            <li>第一人称叙事</li>
+          </ul>
+          <div class="film-action">
+            <button type="button" class="film-cta" aria-controls="guest-film"><span>播放影片</span><span aria-hidden="true">↗</span></button>
           </div>
         </div>
       </div>
@@ -1166,6 +1180,7 @@ function createPortfolioGallery(view, entries, assets, actions) {
   const detail = $('#project');
   const guestFilm = $('#guest-film');
   const guestDisplay = $('.guest-display');
+  const guestCopy = $('.guest-copy');
   const tvcFilm = $('#tvc-film');
   const tvcDisplay = $('.tvc-display');
   const gucciFilm = $('#gucci-film');
@@ -1471,7 +1486,7 @@ function createPortfolioGallery(view, entries, assets, actions) {
     overlay.addEventListener('click', play);
     cta?.addEventListener('click', play);
   }
-  bindFilmControls(guestFilm, $('.film-play', guestDisplay));
+  bindFilmControls(guestFilm, $('.film-play', guestDisplay), $('.film-cta', guestCopy));
   bindFilmControls(tvcFilm, $('.film-play', tvcDisplay));
   bindFilmControls(gucciFilm, gucciPlay, $('.film-cta'));
 
@@ -1642,7 +1657,8 @@ function createPortfolioGallery(view, entries, assets, actions) {
     });
     gucciIntro.classList.toggle('is-film', showGucciFilm || showGuestFilm);
     gucciDisplay.hidden = gucciCopy.hidden = gucciBoard.hidden = $('.film-eyebrow').hidden = !showGucciFilm;
-    $('.detail-eyebrow').hidden = showGucciFilm;
+    guestCopy.hidden = $('.guest-eyebrow').hidden = !showGuestFilm;
+    $('.detail-eyebrow').hidden = showGucciFilm || showGuestFilm;
     if (showGucciFilm && !gucciFilm.hasAttribute('src')) {
       gucciFilm.poster = filmPosterSource();
       gucciFilm.src = sharedAsset('gucci-film-data', 'video/mp4');
