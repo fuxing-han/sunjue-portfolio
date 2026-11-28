@@ -240,6 +240,7 @@
       display: grid; place-items: center; width: 54px; height: 54px; border: 1px solid #fff;
       border-radius: 50%; background: rgb(16 16 16 / .34); color: #fff;
     }
+    .film-loading {position: absolute; left: 50%; top: 58%; transform: translateX(-50%); max-width: 85%; padding: 6px 12px; border-radius: 100vw; background: rgb(0 0 0 / .58); color: #fff; font-size: 12px; white-space: nowrap; pointer-events: none}
     .film-play:hover {background: rgb(16 16 16 / .62)}
     .film-play:focus-visible {outline-color: #fff}
     .film-play svg {width: 24px; height: 24px}
@@ -559,7 +560,7 @@
 以星星与月亮为线索，串联第一人称视角下的凝视与牵手，
 探索动漫游戏风格中的角色叙事与情绪表达。</p>
           <ul class="film-tags">
-            <li>18 秒短片</li>
+            <li>19 秒短片</li>
             <li>9:16 竖屏</li>
             <li>第一人称叙事</li>
           </ul>
@@ -570,7 +571,7 @@
       </div>
       <figure class="film-display" hidden>
         <div class="film-player">
-          <video class="project-film" id="gucci-film" controls playsinline preload="none" width="1080" height="1920" aria-labelledby="gucci-film-caption"></video>
+          <video class="project-film" id="gucci-film" controls playsinline preload="metadata" width="1080" height="1920" aria-labelledby="gucci-film-caption"></video>
           <button class="film-play" type="button" aria-controls="gucci-film">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 4l13 8-13 8z"/></svg>
             <span class="sr-only" data-copy="gucciPlay">播放影片</span>
@@ -580,12 +581,12 @@
       </figure>
       <figure class="film-display guest-display" hidden>
         <div class="film-player">
-          <video class="project-film" id="guest-film" controls playsinline preload="none" width="1080" height="1920" aria-label="唯一的来宾完整短片"></video>
+          <video class="project-film" id="guest-film" controls playsinline preload="metadata" width="1080" height="1920" aria-label="唯一的来宾完整短片"></video>
           <button class="film-play" type="button" aria-controls="guest-film" aria-label="播放唯一的来宾">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 4l13 8-13 8z"/></svg>
           </button>
         </div>
-        <figcaption class="film-caption">唯一的来宾 / 18 秒竖屏短片</figcaption>
+        <figcaption class="film-caption">唯一的来宾 / 19 秒竖屏短片</figcaption>
       </figure>
     </div>
     <section class="film-board" id="film-board" lang="zh-CN" aria-labelledby="film-board-title" hidden>
@@ -697,7 +698,7 @@
     </figure>
     <figure class="tvc-display" hidden>
       <div class="film-player">
-        <video class="project-film" id="tvc-film" controls playsinline preload="none" width="1920" height="1080" aria-label="TVC广告成片"></video>
+        <video class="project-film" id="tvc-film" controls playsinline preload="metadata" width="1920" height="1080" aria-label="TVC广告成片"></video>
         <button class="film-play" type="button" aria-controls="tvc-film" aria-label="播放TVC广告">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 4l13 8-13 8z"/></svg>
         </button>
@@ -806,10 +807,10 @@ Phone and scene props not included</p></article>
   </footer>
 
 
-<script type="application/octet-stream" id="guest-film-data" data-source="./asset-guest-film-data.mp4?v=ee70be94c3"></script>
-<script type="application/octet-stream" id="guest-poster-data" data-source="./asset-guest-poster-data.webp"></script>
+<script type="application/octet-stream" id="guest-film-data" data-source="./asset-guest-film-data.mp4?v=096ab3292a"></script>
+<script type="application/octet-stream" id="guest-final-poster-data" data-source="./asset-guest-final-poster-data.webp"></script>
 
-<script type="application/octet-stream" id="guest-film-stream-data" data-source="./asset-guest-film-stream-data.mp4?v=016003a8ae"></script>
+<script type="application/octet-stream" id="guest-film-stream-data" data-source="./asset-guest-film-stream-data.mp4?v=a105591503"></script>
 <script type="application/octet-stream" id="gucci-film-stream-data" data-source="./asset-gucci-film-stream-data.mp4?v=dfee1a2ddf"></script>
 <script type="application/octet-stream" id="tvc-film-stream-data" data-source="./asset-tvc-film-stream-data.mp4?v=4fda223bdd"></script>
   <template id="work-template">
@@ -823,7 +824,7 @@ Phone and scene props not included</p></article>
       </div>
     </a>
   </template>
-  <script type="application/json" id="reel-customization">{"id":"original","text":{"projectTitle3":"产品电商","projectDescription3":"OBSBOT 寻影 · AI 追踪手机支架电商视觉 ","projectDescription4":"GUCCI美妆 · AIGC爆款广告复刻","projectTitle4":"爆款广告复刻","gucciCaption":"FINAL FILM — 14 SECONDS","gucciTitle":"偶然入镜","boardTitle":"","gucciTag1":"14 秒短片","projectTitle5":"唯一的来宾","projectDescription5":"18 秒竖屏短片 · 9:16","coverLabel5":"动漫游戏风格短片"},"images":{"cover1":"./asset-custom-cover1.webp","cover0":"./asset-custom-cover0.webp","cover2":"./asset-custom-cover2.webp","cover3":"./asset-custom-cover3.webp","cover4":"./asset-custom-cover4.webp","cover5":"./asset-custom-cover5.webp"}}</script>
+  <script type="application/json" id="reel-customization">{"id":"original","text":{"projectTitle3":"产品电商","projectDescription3":"OBSBOT 寻影 · AI 追踪手机支架电商视觉 ","projectDescription4":"GUCCI美妆 · AIGC爆款广告复刻","projectTitle4":"爆款广告复刻","gucciCaption":"FINAL FILM — 14 SECONDS","gucciTitle":"偶然入镜","boardTitle":"","gucciTag1":"14 秒短片","projectTitle5":"唯一的来宾","projectDescription5":"19 秒竖屏短片 · 9:16","coverLabel5":"动漫游戏风格短片"},"images":{"cover1":"./asset-custom-cover1.webp","cover0":"./asset-custom-cover0.webp","cover2":"./asset-custom-cover2.webp","cover3":"./asset-custom-cover3.webp","cover4":"./asset-custom-cover4.webp","cover5":"./asset-custom-cover5.webp"}}</script>
   <script type="application/json" id="model-gallery-data">[{"asset":"model-01","name":"1.jpg","width":1920,"height":1080,"src":"./asset-model-01.webp"},{"asset":"model-02","name":"2.jpg","width":1920,"height":1162,"src":"./asset-model-02.webp"},{"asset":"model-03","name":"3.jpg","width":1920,"height":1372,"src":"./asset-model-03.webp"},{"asset":"model-04","name":"4.jpg","width":1920,"height":1021,"src":"./asset-model-04.webp"},{"asset":"model-05","name":"5.jpg","width":1920,"height":1083,"src":"./asset-model-05.webp"},{"asset":"model-06","name":"6.jpg","width":1920,"height":1471,"src":"./asset-model-06.webp"},{"asset":"model-07","name":"7.jpg","width":1920,"height":1203,"src":"./asset-model-07.webp"},{"asset":"model-08","name":"8.jpg","width":1920,"height":1204,"src":"./asset-model-08.webp"},{"asset":"model-09","name":"9.jpg","width":1920,"height":1333,"src":"./asset-model-09.webp"},{"asset":"model-10","name":"10.jpg","width":1920,"height":2797,"src":"./asset-model-10.webp"},{"asset":"model-11","name":"11.jpg","width":1920,"height":2775,"src":"./asset-model-11.webp"},{"asset":"model-12","name":"12.jpg","width":1920,"height":1723,"src":"./asset-model-12.webp"},{"asset":"model-13","name":"13.jpg","width":1920,"height":1404,"src":"./asset-model-13.webp"},{"asset":"model-14","name":"14.jpg","width":1920,"height":3227,"src":"./asset-model-14.webp"},{"asset":"model-15","name":"15.png","width":1920,"height":2560,"src":"./asset-model-15.webp"},{"asset":"model-16","name":"16.jpg","width":1920,"height":2488,"src":"./asset-model-16.webp"},{"asset":"model-17","name":"17.jpg","width":1920,"height":2560,"src":"./asset-model-17.webp"},{"asset":"model-18","name":"18.jpg","width":1920,"height":2210,"src":"./asset-model-18.webp"},{"asset":"model-19","name":"19.jpg","width":1920,"height":1357,"src":"./asset-model-19.webp"},{"asset":"model-20","name":"20.jpg","width":1920,"height":1424,"src":"./asset-model-20.webp"},{"asset":"model-21","name":"21.jpg","width":1920,"height":2919,"src":"./asset-model-21.webp"},{"asset":"model-22","name":"22.jpg","width":1920,"height":1344,"src":"./asset-model-22.webp"},{"asset":"model-23","name":"23.jpg","width":1920,"height":1280,"src":"./asset-model-23.webp"},{"asset":"model-24","name":"24.jpg","width":1920,"height":1272,"src":"./asset-model-24.webp"},{"asset":"model-25","name":"25.jpg","width":1920,"height":1281,"src":"./asset-model-25.webp"},{"asset":"model-26","name":"26.jpg","width":1920,"height":1343,"src":"./asset-model-26.webp"},{"asset":"model-27","name":"27.jpg","width":1920,"height":1138,"src":"./asset-model-27.webp"},{"asset":"model-28","name":"28.jpg","width":1920,"height":1080,"src":"./asset-model-28.webp"}]</script>
   <script type="application/json" id="ip-gallery-data">[{"asset":"ip-01","name":"1.png","width":1920,"height":1403,"src":"./asset-ip-01.webp"},{"asset":"ip-02","name":"2.jpg","width":1920,"height":1079,"src":"./asset-ip-02.webp"},{"asset":"ip-03","name":"3.png","width":1920,"height":2428,"src":"./asset-ip-03.webp"},{"asset":"ip-04","name":"4.png","width":1920,"height":1036,"src":"./asset-ip-04.webp"},{"asset":"ip-05","name":"5.png","width":1920,"height":2964,"src":"./asset-ip-05.webp"},{"asset":"ip-06","name":"6.png","width":1920,"height":10653,"tiles":[{"asset":"ip-06-tile-01","width":1920,"height":1600,"src":"./asset-ip-06-tile-01.webp","mobileSrc":"./asset-ip-06-tile-01-mobile.webp"},{"asset":"ip-06-tile-02","width":1920,"height":1600,"src":"./asset-ip-06-tile-02.webp","mobileSrc":"./asset-ip-06-tile-02-mobile.webp"},{"asset":"ip-06-tile-03","width":1920,"height":1600,"src":"./asset-ip-06-tile-03.webp","mobileSrc":"./asset-ip-06-tile-03-mobile.webp"},{"asset":"ip-06-tile-04","width":1920,"height":1600,"src":"./asset-ip-06-tile-04.webp","mobileSrc":"./asset-ip-06-tile-04-mobile.webp"},{"asset":"ip-06-tile-05","width":1920,"height":1600,"src":"./asset-ip-06-tile-05.webp","mobileSrc":"./asset-ip-06-tile-05-mobile.webp"},{"asset":"ip-06-tile-06","width":1920,"height":1600,"src":"./asset-ip-06-tile-06.webp","mobileSrc":"./asset-ip-06-tile-06-mobile.webp"},{"asset":"ip-06-tile-07","width":1920,"height":1053,"src":"./asset-ip-06-tile-07.webp","mobileSrc":"./asset-ip-06-tile-07-mobile.webp"}],"src":"./asset-ip-06.webp"},{"asset":"ip-07","name":"7.png","width":1920,"height":5272,"tiles":[{"asset":"ip-07-tile-01","width":1920,"height":1600,"src":"./asset-ip-07-tile-01.webp","mobileSrc":"./asset-ip-07-tile-01-mobile.webp"},{"asset":"ip-07-tile-02","width":1920,"height":1600,"src":"./asset-ip-07-tile-02.webp","mobileSrc":"./asset-ip-07-tile-02-mobile.webp"},{"asset":"ip-07-tile-03","width":1920,"height":1600,"src":"./asset-ip-07-tile-03.webp","mobileSrc":"./asset-ip-07-tile-03-mobile.webp"},{"asset":"ip-07-tile-04","width":1920,"height":472,"src":"./asset-ip-07-tile-04.webp","mobileSrc":"./asset-ip-07-tile-04-mobile.webp"}],"src":"./asset-ip-07.webp"},{"asset":"ip-08","name":"8.png","width":1920,"height":2001,"src":"./asset-ip-08.webp"},{"asset":"ip-09","name":"9.png","width":1920,"height":4618,"tiles":[{"asset":"ip-09-tile-01","width":1920,"height":1600,"src":"./asset-ip-09-tile-01.webp","mobileSrc":"./asset-ip-09-tile-01-mobile.webp"},{"asset":"ip-09-tile-02","width":1920,"height":1600,"src":"./asset-ip-09-tile-02.webp","mobileSrc":"./asset-ip-09-tile-02-mobile.webp"},{"asset":"ip-09-tile-03","width":1920,"height":1418,"src":"./asset-ip-09-tile-03.webp","mobileSrc":"./asset-ip-09-tile-03-mobile.webp"}],"src":"./asset-ip-09.webp"}]</script>
   <script type="application/json" id="product-portfolio-data">[{"name":"MOVE FREELY 黑红封面","width":1672,"height":941,"src":"./asset-product-01.webp"},{"name":"白底主图","width":1254,"height":1254,"src":"./asset-product-02.webp"},{"name":"AI跟随","width":1254,"height":1254,"src":"./asset-product-03.webp"},{"name":"无需配对","width":1254,"height":1254,"src":"./asset-product-04.webp"},{"name":"手势控制","width":1254,"height":1254,"src":"./asset-product-05.webp"},{"name":"跟随机制","width":1254,"height":1254,"src":"./asset-product-06.webp"},{"name":"便携设计","width":1254,"height":1254,"src":"./asset-product-07.webp"},{"name":"手机适配","width":1254,"height":1254,"src":"./asset-product-08.webp"},{"name":"包装内容","width":1254,"height":1254,"src":"./asset-product-09.webp"},{"name":"A+主视觉","width":1672,"height":941,"src":"./asset-product-10.webp"},{"name":"A+功能","width":1672,"height":941,"src":"./asset-product-11.webp"},{"name":"A+场景","width":1672,"height":941,"src":"./asset-product-12.webp"}]</script>
@@ -1269,7 +1270,7 @@ function createPortfolioGallery(view, entries, assets, actions) {
     {id: 2, title: 'TVC广告', description: '服装广告短片'},
     {id: 4, title: 'GUCCI 口红', description: '产品短片'},
     {id: 3, title: '产品电商', description: 'OBSBOT 寻影 Me · AI 追踪手机支架电商视觉'},
-    {id: 5, title: '唯一的来宾', description: '18 秒竖屏短片 · 9:16'}
+    {id: 5, title: '唯一的来宾', description: '19 秒竖屏短片 · 9:16'}
   ];
   // Content and saved edits follow stable project IDs when display order changes.
   const tvcProject = projects.findIndex(project => project.id === 2);
@@ -1531,14 +1532,21 @@ function createPortfolioGallery(view, entries, assets, actions) {
     label.append(quality);
     footer.append(label);
     player.after(footer);
+    const loading = document.createElement('span');
+    loading.className = 'film-loading';
+    loading.textContent = '视频加载中…';
+    loading.setAttribute('role', 'status');
+    loading.hidden = true;
+    player.append(loading);
     let switchVersion = 0;
     function source() {
       return sharedAsset(prefix + '-film-' + (quality.value === 'hd' ? 'data' : 'stream-data'), 'video/mp4');
     }
     function syncPlay() {
       overlay.hidden = !film.paused || (film.currentTime > .1 && !film.ended);
+      loading.hidden = film.paused || film.readyState >= 3 || Boolean(film.error);
     }
-    for (const event of ['play', 'pause', 'ended', 'emptied', 'seeked', 'error']) film.addEventListener(event, syncPlay);
+    for (const event of ['play', 'playing', 'pause', 'waiting', 'canplay', 'ended', 'emptied', 'seeked', 'error']) film.addEventListener(event, syncPlay);
     quality.addEventListener('change', () => {
       const version = ++switchVersion;
       const time = film.currentTime || 0;
@@ -1549,7 +1557,7 @@ function createPortfolioGallery(view, entries, assets, actions) {
         film.currentTime = Math.min(time, Math.max(0, film.duration - .05));
         if (resume && !film.closest('[hidden]')) film.play().catch(syncPlay);
       }, {once: true});
-      film.preload = time > 0 ? 'metadata' : 'none';
+      film.preload = 'metadata';
       film.src = source();
       film.load();
       if (!time && resume && !film.closest('[hidden]')) film.play().catch(syncPlay);
@@ -1720,7 +1728,7 @@ function createPortfolioGallery(view, entries, assets, actions) {
     const showGuestFilm = index === guestProject;
     guestDisplay.hidden = !showGuestFilm;
     if (showGuestFilm && !guestFilm.hasAttribute('src')) {
-      guestFilm.poster = sharedAsset('guest-poster-data', 'image/webp');
+      guestFilm.poster = sharedAsset('guest-final-poster-data', 'image/webp');
       guestFilm.src = sharedAsset('guest-film-stream-data', 'video/mp4');
     } else if (!showGuestFilm) {
       guestFilm.pause();
